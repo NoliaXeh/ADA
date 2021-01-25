@@ -30,9 +30,7 @@
 ## Tâches
 
 
-###  1. Link de la SDL (ou SFML) (à voir)
-
-https://github.com/Lucretia/sdlada
+###  1. Link de GTKADA (c'était bien de la merde, mais c'est fait)
 
 ### 2. Game Engine (Leo)
 

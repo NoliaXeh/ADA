@@ -1,0 +1,26 @@
+with "gtkada";
+
+project Default is
+
+   type Build_Kind is
+      ("static", "static-pic", "relocatable");
+   for Source_Dirs use ("src");
+   for Object_Dir use "obj";
+   --LIBRARY_TYPE : Build_Kind := external ("LIBRARY_TYPE");
+   LIBRARY_TYPE : Build_Kind := "static";
+
+
+   case LIBRARY_TYPE is
+
+      when "static" =>
+         for Main use ("main.adb", "block.adb");
+
+      when "static-pic" =>
+         for Main use ("main.adb");
+
+      when "relocatable" =>
+         for Main use ("main.adb");
+   end case;
+
+end Default;
+

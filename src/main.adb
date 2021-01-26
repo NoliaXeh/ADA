@@ -1,5 +1,4 @@
 with Gdk.Event;       use Gdk.Event;
-
 with Gtk.Box;         use Gtk.Box;
 with Gtk.Label;       use Gtk.Label;
 with Gtk.Widget;      use Gtk.Widget;
@@ -8,9 +7,11 @@ with Gtk.Window;      use Gtk.Window;
 with Gtk.Image;       use Gtk.Image;
 with Gtk.Fixed;       use Gtk.Fixed;
 with Gtk.Layout;      use Gtk.Layout;
+with Glib;            use Glib;
+with Glib.Main;       use Glib.Main;
 
 with Block; use Block;
-
+with Game; use Game;
 
 procedure Main is
 
@@ -19,6 +20,8 @@ procedure Main is
    Fixed_Back: Gtk_Fixed;
    Fixed_Mid: Gtk_Fixed;
    Fixed_Front: Gtk_Fixed;
+   test: Gtk_Widget_Record;
+   osef: G_Source_Id;
 
    function Delete_Event_Cb
      (Self  : access Gtk_Widget_Record'Class;
@@ -41,6 +44,7 @@ procedure Main is
    end Delete_Event_Cb;
 
 begin
+
    --  Initialize GtkAda.
    Gtk.Main.Init;
 
@@ -77,6 +81,10 @@ begin
    -- Stop the Gtk process when closing the window
    Win.On_Delete_Event (Delete_Event_Cb'Unrestricted_Access);
 
+   --- Call game Loop
+   osef := Glib.Main.Timeout_Add(Interval => 33, -- ms
+                    Func     => Game.Game'Access);
+   ---
    --  Show the window and present it
    Win.Show_All;
    Win.Present;

@@ -51,20 +51,30 @@ begin
 
    --  Create a window with a size of 400x400
    Gtk_New (Win);
+   Win.Set_Default_Size (400, 400);
 
+   --- Main Layout, only thing attafched to the Window
    Gtk_New (Layout);
+   Win.add(Layout);
 
+   --- Main Fixed, attached to Layout
+   Gtk_New (Fixed);
+   Layout.Put (Fixed, -10, -50);
+
+   --- Each Layer, attached to Fixed
    Gtk_New (Fixed_Back);
    Gtk_New (Fixed_Mid);
    Gtk_New (Fixed_Entities);
    Gtk_New (Fixed_Front);
-   Gtk_New (Fixed);
-   Win.Set_Default_Size (400, 400);
+
    Fixed.Put (Fixed_Back, 0, 0);
    Fixed.Put (Fixed_Mid, 0, 0);
    Fixed.Put (Fixed_Entities, 0, 0);
    Fixed.Put (Fixed_Front, 0, 0);
-   Layout.Put (Fixed, -10, -50);
+
+
+   --- Create Images in Mid, Back, and Front for testing
+
 
    Block.Place_Block(Path => "goku.png",
                      X    => 0,
@@ -79,23 +89,20 @@ begin
                      Y    => 0,
                      Fixed  => Fixed_Front);
 
-   Win.add(Layout);
-   Layout.Show_All;
-
-
    -- Stop the Gtk process when closing the window
    Win.On_Delete_Event (Delete_Event_Cb'Unrestricted_Access);
-
-   --- Call game Loop
-   Game.Fixed := Fixed;
-   Game.Layout := Layout;
-
-   osef := Glib.Main.Timeout_Add(Interval => 33, -- ms
-                    Func     => Game.Game'Access);
-   ---
    --  Show the window and present it
    Win.Show_All;
    Win.Present;
+
+   --- Setup Globals for the Game Loop
+   Game.Fixed := Fixed;
+   Game.Layout := Layout;
+   --- Setting up game Loop, ignore returned value
+   --- 30 FPS => 1000/60 ms between each frames => 16ms
+   osef := Glib.Main.Timeout_Add(Interval => 16, -- ms
+                                 Func     => Game.Game'Access);
+   ---
 
    --  Start the Gtk+ main loop
    Gtk.Main.Main;

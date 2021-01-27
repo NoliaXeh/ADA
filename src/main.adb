@@ -15,13 +15,14 @@ with Game; use Game;
 
 procedure Main is
 
-   Win   : Gtk_Window;
-   Layout: Gtk_Layout;
-   Fixed_Back: Gtk_Fixed;
-   Fixed_Mid: Gtk_Fixed;
-   Fixed_Front: Gtk_Fixed;
-   test: Gtk_Widget_Record;
-   osef: G_Source_Id;
+   Win           : Gtk_Window;
+   Layout        : Gtk_Layout;
+   Fixed         : Gtk_Fixed;
+   Fixed_Back    : Gtk_Fixed;
+   Fixed_Mid     : Gtk_Fixed;
+   Fixed_Entities: Gtk_Fixed;
+   Fixed_Front   : Gtk_Fixed;
+   osef          : G_Source_Id;
 
    function Delete_Event_Cb
      (Self  : access Gtk_Widget_Record'Class;
@@ -55,11 +56,15 @@ begin
 
    Gtk_New (Fixed_Back);
    Gtk_New (Fixed_Mid);
+   Gtk_New (Fixed_Entities);
    Gtk_New (Fixed_Front);
+   Gtk_New (Fixed);
    Win.Set_Default_Size (400, 400);
-   Layout.Put(Fixed_Back, 0, 0);
-   Layout.Put(Fixed_Mid, 0, 0);
-   Layout.Put(Fixed_Front, 0, 0);
+   Fixed.Put (Fixed_Back, 0, 0);
+   Fixed.Put (Fixed_Mid, 0, 0);
+   Fixed.Put (Fixed_Entities, 0, 0);
+   Fixed.Put (Fixed_Front, 0, 0);
+   Layout.Put (Fixed, -10, -50);
 
    Block.Place_Block(Path => "goku.png",
                      X    => 0,
@@ -82,6 +87,9 @@ begin
    Win.On_Delete_Event (Delete_Event_Cb'Unrestricted_Access);
 
    --- Call game Loop
+   Game.Fixed := Fixed;
+   Game.Layout := Layout;
+
    osef := Glib.Main.Timeout_Add(Interval => 33, -- ms
                     Func     => Game.Game'Access);
    ---

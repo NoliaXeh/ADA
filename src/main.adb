@@ -99,7 +99,7 @@ begin
    Game.Fixed := Fixed;
    Game.Layout := Layout;
    --- Setting up game Loop, ignore returned value
-   --- 30 FPS => 1000/60 ms between each frames => 16ms
+   --- 60 FPS => 1000/60 ms between each frames => 16ms
    osef := Glib.Main.Timeout_Add(Interval => 16, -- ms
                                  Func     => Game.Game'Access);
    ---

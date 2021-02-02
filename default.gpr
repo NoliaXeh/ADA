@@ -22,5 +22,13 @@ project Default is
          for Main use ("main.adb");
    end case;
 
+   -- Enable assertions
+   package Builder is
+      for Switches ("ada") use ("-s");
+   end Builder;
+   package Compiler is
+      for Switches ("ada") use ("-gnata");
+   end Compiler;
+
 end Default;
 

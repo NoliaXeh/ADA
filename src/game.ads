@@ -9,5 +9,8 @@ package Game is
    count: Integer := 0;
    Layout : Gtk_Layout;
    Fixed : Gtk_Fixed;
+   Fixed_Mid : Gtk_Fixed;
+   Fixed_Back : Gtk_Fixed;
+   Fixed_Front : Gtk_Fixed;
 
 end Game;

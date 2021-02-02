@@ -11,9 +11,15 @@ package Game is
 
    count: Integer := 0;
    Layout : Gtk_Layout;
+
    Fixed : Gtk_Fixed;
+   Fixed_Mid : Gtk_Fixed;
+   Fixed_Back : Gtk_Fixed;
+   Fixed_Front : Gtk_Fixed;
+
    Delta_Time : Float := 1.0 / 60.0; -- 60 FPS
    Gravity : Float := 9.8;
+
    Object : Entity.Entity := (
                       HitBox => (Size => (X => 1.0, Y => 1.0)),      -- HitBox: Physics.HitBox;
                       Position => (50.0, 250.0),      -- Position: Vector.Vector;
@@ -21,6 +27,5 @@ package Game is
                       Mass => 1.0,     -- Mass: Float;
                       Sprite => null      -- Sprite: Gtk_Fixed;
                       );
-
 
 end Game;

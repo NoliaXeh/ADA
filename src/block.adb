@@ -5,6 +5,7 @@ with Gtk.Window;      use Gtk.Window;
 with Glib;            use Glib;
 with Glib.Error;      use Glib.Error;
 with Gtk.Layout;      use Gtk.Layout;
+with Game; use Game;
 
 
 package body Block is
@@ -15,8 +16,8 @@ package body Block is
    begin
       Gdk_New_From_File (Buf, path, er);
       Buf := Scale_Simple(Src         => Buf,
-                          Dest_Width  => 128,
-                          Dest_Height => 128,
+                          Dest_Width  => 64,
+                          Dest_Height => 64,
                           Inter_Type  => Interp_Bilinear);
       Gtk_New (Img, Buf);
       Fixed.Put(Widget => Img,

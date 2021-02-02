@@ -9,11 +9,8 @@ package Entity is
       Position: Vector.Vector;
       Forces: Vector.Vector;
       Mass: Float;
-      Life: Integer;
-      Max_Life: Integer;
-      Alive: Boolean;
       Sprite: Gtk_Fixed;
-   end Entity;
+   end record;
 
    function Collides ( Object_A: Entity; Object_B: Entity ) return Boolean;
    -- Test collision with another entity
@@ -22,15 +19,11 @@ package Entity is
    function Collides (Object: Entity; Position: Vector.Vector) return Boolean;
    -- Test if the entity touches a given coordinate
 
-   procedure Apply_Force (Object: Entity; Force: Vector.Vector);
+   procedure Apply_Force (Object: in out Entity; Force: in Vector.Vector);
    -- Apply a force the the entity. Need to Update the entity to watch the result
-   procedure Kill (Object: Entity);
-   -- Kill the entity by setting Entity.Alive to False.
 
-   function Update (Object: Entity) return Boolean;
-   -- Update the Entity by:
-   --   - Testing the entity life. If Life < 0 => Alive := False
-   --   - Testing the entity life. If Life > Max_Life => Life := Max_Life
+   procedure Update (Object: in out Entity);
+   -- Update the Entity by
    --   - Applying the Forces to update the Entity position
    --   - Does not update sprite position
 end Entity;

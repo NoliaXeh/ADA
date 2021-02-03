@@ -9,9 +9,11 @@ with Gtk.Window;      use Gtk.Window;
 with Gtk.Image;       use Gtk.Image;
 with Gtk.Fixed;       use Gtk.Fixed;
 with Gtk.Layout;      use Gtk.Layout;
-
+with Gtk.Handlers;
 with Glib;            use Glib;
 with Glib.Main;       use Glib.Main;
+with Glib.Object; use Glib.Object;
+with Ada.Text_IO; use Ada.Text_IO;
 
 with Block; use Block;
 with Game; use Game;
@@ -20,6 +22,16 @@ with Graphics; use Graphics;
 with Ada.Containers.Hashed_Maps;  use Ada.Containers;
 with Maps;  use Maps;
 with File;  use File;
+with inputEvent;  use inputEvent;
+with inputEvent;  use inputEvent;
+
+--TEST
+WITH Gtk.Main ;          USE Gtk.Main ;
+WITH Gdk.Types ;               USE Gdk.Types;
+WITH Gdk.Types.Keysyms ;       USE Gdk.Types.Keysyms ;
+with Gdk.Event; use Gdk.Event;
+
+WITH Gtk.Handlers ;
 
 procedure Main is
 
@@ -52,6 +64,7 @@ procedure Main is
       return True;
    end Delete_Event_Cb;
    Output:Maps.Map;
+
 begin
    File.Read_File (Output => Output);
    Maps.print(map =>Output);
@@ -108,6 +121,9 @@ begin
    Game.Fixed_Back := Fixed_Back;
    Game.Fixed_Front := Fixed_Front;
    Game.Layout := Layout;
+   --EVENT
+   win.On_Key_Press_Event(Process_Key_Press'Unrestricted_Access);
+
    --- Setting up game Loop, ignore returned value
    --- 60 FPS => 1000/60 ms between each frames => 16ms
    osef := Glib.Main.Timeout_Add(Interval => 16, -- ms

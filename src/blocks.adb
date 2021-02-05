@@ -8,7 +8,7 @@ with Gtk.Layout;      use Gtk.Layout;
 with Game; use Game;
 
 
-package body Block is
+package body Blocks is
    procedure Place_Block ( Path: String; X: Gint; Y: Gint; Fixed: Gtk_Fixed) is
       Img: Gtk_Image;
       Buf: Gdk_Pixbuf;
@@ -24,4 +24,4 @@ package body Block is
                  X      => X,
                  Y      => Y);
    end;
-end Block;
+end Blocks;

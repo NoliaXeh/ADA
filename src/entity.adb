@@ -44,7 +44,8 @@ package body Entity is
    --   - Applying the Forces to update the Entity position
    --   - Does not update sprite position
    begin
-      Apply_Force(Object, (0.0, Object.Mass * Game.Gravity));
+      Apply_Force(Object, (0.0, Object.Mass * Game.Gravity * Game.Delta_Time));
+      Apply_Force(Object, (-Object.Forces.X * 0.1, 0.0 * Game.Delta_Time));
       Object.Position := Vector.Add(Object.Position, Vector.Mul(Object.Forces, Game.Delta_Time));
    end;
    

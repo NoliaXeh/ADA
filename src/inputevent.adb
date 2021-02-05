@@ -8,6 +8,8 @@ WITH Gtk.Handlers ;
 with Ada.Text_IO; use Ada.Text_IO;
 with game; use Game;
 with Glib;            use Glib;
+with Game; use Game;
+with Entity; use Entity;
 
 package body inputEvent
 with SPARK_Mode => Off -- GTK
@@ -19,15 +21,18 @@ is
    begin
       Key := Event.Keyval;
       if Key = Gdk_Down then
-            game.Layout.Move (Fixed, 0, Gint(64));
+         null;
       elsif Key = Gdk_Up then
-         game.Layout.Move (Fixed, 0, -Gint(64));
+         null;
       elsif Key = Gdk_Left then
-         game.Layout.Move (Fixed, -Gint(64), 0);
+         Apply_Force(Game.Player, (-200.0, 0.0));
+         null;
       elsif Key = Gdk_Right then
-         game.Layout.Move (Fixed, Gint(64), 0);
+         Apply_Force(Game.Player, (200.0, 0.0));
+         null;
       elsif Key = Gdk_Space then
-            Put_Line("space");
+         Apply_Force(Game.Player, (0.0, -100.0));
+         null;
       end if;
       return True;
    end Process_Key_Press;

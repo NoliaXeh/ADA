@@ -14,11 +14,24 @@ is
    function Game return Boolean is
    begin
       ---
-      Put_Line("Game Loop");
-      Player.Mass := 0.0;
+      Put("Player Pos: ");
+      Put(Player.Position.X);
+      Put(", ");
+      Put(Player.Position.Y);
+      Put_Line("");
+      Put("Player Forces: ");
+      Put(Player.Forces.X);
+      Put(", ");
+      Put(Player.Forces.Y);
+      Put_Line("");
+      Player.Mass := 100.0;
       Entity.Update(Object => Player);
 
       --- Move all fixed to "follow" player
+
+      Layout.Move(Child_Widget => Fixed,
+                  X            => Gint(- Player.Position.X),
+                  Y            => Gint(- Player.Position.Y));
 
       ---
       return True;

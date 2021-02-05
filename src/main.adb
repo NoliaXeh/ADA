@@ -96,7 +96,7 @@ begin
 
 
    Fixed.Put (Fixed_Mid, 0, 0);
-   Fixed.Put (Fixed_Entities, 0, 0);
+   Layout.Put (Fixed_Entities, 0, 0);
    Fixed.Put (Fixed_Front, 0, 0);
 
 

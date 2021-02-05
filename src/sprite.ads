@@ -7,7 +7,9 @@ with Glib.Error;      use Glib.Error;
 with Gtk.Layout;      use Gtk.Layout;
 with Vector;          use Vector;
 
-package Sprite is
+package Sprite
+with SPARK_Mode => Off --GTK
+is
 
    type Sprite is record
       Image   : Gtk_Image;

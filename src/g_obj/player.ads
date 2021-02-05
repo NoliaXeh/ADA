@@ -1,6 +1,8 @@
 with GameObject;
 
-package Player is
+package Player
+with SPARK_Mode => On
+is
 
    type Player is new GameObject.GameObject with private;
    

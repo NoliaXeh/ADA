@@ -8,7 +8,9 @@ with Gtk.Layout;      use Gtk.Layout;
 with Game; use Game;
 
 
-package body Blocks is
+package body Blocks
+with SPARK_Mode => Off -- GTK
+is
    procedure Place_Block ( Path: String; X: Gint; Y: Gint; Fixed: Gtk_Fixed) is
       Img: Gtk_Image;
       Buf: Gdk_Pixbuf;

@@ -3,7 +3,9 @@ with Physics;         use Physics;
 with Vector;          use Vector;
 with Game;            use Game;
 
-package body Entity is
+package body Entity
+with SPARK_Mode => Off
+is
 
    function Collides ( Object_A: Entity; Object_B: Entity ) return Boolean is
       -- Test collision with another entity

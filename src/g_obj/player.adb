@@ -1,4 +1,6 @@
-package body Player is
+package body Player 
+with SPARK_Mode => On
+is
 
    -- getter
    function getMaxHp (Self : in Player) return Float is (Self.MaxHp);

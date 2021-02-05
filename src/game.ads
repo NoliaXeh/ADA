@@ -1,13 +1,16 @@
+with Glib;            use Glib;
 with Gtk.Fixed;       use Gtk.Fixed;
 with Gtk.Layout;      use Gtk.Layout;
 with Entity;          use Entity;
 with Vector;          use Vector;
-with Physics;         use Physics;
+with Physics;          use Physics;
 with Gtk.Window;      use Gtk.Window;
 with Glib;            use Glib;
+with Maps; use Maps;
 
-package Game is
-
+package Game
+with SPARK_Mode => Off
+is
    function Game return Boolean;
    --- Core game loop
 
@@ -23,6 +26,7 @@ package Game is
    Fixed_Front : Gtk_Fixed;
    Fixed_Entities : Gtk_Fixed;
    Win           : Gtk_Window;
+   Map         : Maps.Map;
 
    Delta_Time  : Float := 1.0 / 60.0; -- 60 FPS
    Gravity     : Float := 9.8;

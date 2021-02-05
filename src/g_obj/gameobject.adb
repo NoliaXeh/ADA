@@ -5,15 +5,15 @@ package body GameObject is
    
    -- getter
    function getId (Self : in GameObject) return Integer is (Self.Id);
-   function getSpriteId (Self : in GameObject) return Integer is (Self.SpriteId);
+   function getSpritePath (Self : in GameObject) return String is (To_String(Self.SpritePath));
    function getName (Self : in GameObject) return String is (To_String(Self.Name));
    function getEntity (Self : in GameObject) return Entity.Entity is (Self.RigidBody);
    
    -- setter
-   procedure setSpriteId (Self : in out GameObject; Value : in Integer) is
+   procedure setSpritePath (Self : in out GameObject; Value : in String) is
    begin
-      Self.SpriteId := Value;
-   end setSpriteId;
+      Self.SpritePath := To_Unbounded_String(Value);
+   end setSpritePath;
 
    procedure setName (Self : in out GameObject; Value : in String) is
    begin

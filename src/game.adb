@@ -8,7 +8,9 @@ with Entity;          use Entity;
 with Sprite;          use Sprite;
 
 
-package body Game is
+package body Game
+with SPARK_Mode => Off
+is
    function Game return Boolean is
    begin
       ---

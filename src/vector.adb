@@ -2,7 +2,9 @@
 with Ada.Numerics.Elementary_Functions;
 
 
-package body Vector is
+package body Vector
+with SPARK_Mode => On
+is
 
    function Normalize (V: Vector) return Vector is
       Result: Vector;

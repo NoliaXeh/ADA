@@ -1,6 +1,8 @@
 with Vector; use Vector;
 
-package body Physics is
+package body Physics
+with SPARK_Mode => On
+is
 
    function Collides (A    : HitBox;
                       A_Pos: Vector.Vector;
@@ -10,7 +12,7 @@ package body Physics is
    --- Test if 2 hitboxes collide at given positions
       A_A: Vector.Vector;
       A_B: Vector.Vector;
-      A_C: Vector.Vector;
+      -- A_C: Vector.Vector;
       A_D: Vector.Vector;
       B_A: Vector.Vector;
       B_B: Vector.Vector;
@@ -20,7 +22,7 @@ package body Physics is
    begin
       A_A := A_Pos;
       A_B := Add(A_A, (0.0, A.Size.Y));
-      A_C := Add(A_A, (A.Size.X, A.Size.Y));
+      -- A_C := Add(A_A, (A.Size.X, A.Size.Y));
       A_D := Add(A_A, (A.Size.X, 0.0));
       B_A := B_Pos;
       B_B := Add(B_A, (0.0, B.Size.Y));

@@ -1,7 +1,7 @@
 WITH Gtk.Main ;          USE Gtk.Main ;
 WITH Gtk.Window ;        USE Gtk.Window ;
 WITH Gtk.Widget ;           USE Gtk.Widget ;
-WITH Gdk.Types ;               USE Gdk.Types; 
+WITH Gdk.Types ;               USE Gdk.Types;
 WITH Gdk.Types.Keysyms ;       USE Gdk.Types.Keysyms ;
 with Gdk.Event; use Gdk.Event;
 WITH Gtk.Handlers ;
@@ -11,7 +11,9 @@ with Glib;            use Glib;
 with Game; use Game;
 with Entity; use Entity;
 
-package body inputEvent is 
+package body inputEvent
+with SPARK_Mode => Off -- GTK
+is
    function Process_Key_Press( Self: access Gtk_Widget_Record'Class;
                                 Event: Gdk.Event.Gdk_Event_Key ) return Boolean is
       Key: Gdk.Types.Gdk_Key_type;
@@ -34,6 +36,6 @@ package body inputEvent is
       end if;
       return True;
    end Process_Key_Press;
-   
+
 
 end inputEvent;

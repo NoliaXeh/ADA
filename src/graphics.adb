@@ -2,7 +2,9 @@ with Maps; use Maps;
 with Gtk.Fixed;       use Gtk.Fixed;
 with Gtk.Image;       use Gtk.Image;
 with Game; use Game;
-package body Graphics is
+package body Graphics
+with SPARK_Mode => Off -- GTK
+is
 
    procedure fill_screen(map: in Maps.Map) is
    begin

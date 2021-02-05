@@ -7,7 +7,9 @@ with Physics;         use Physics;
 with Entity;          use Entity;
 
 
-package body Game is
+package body Game
+with SPARK_Mode => Off
+is
    function Game return Boolean is
    begin
       ---

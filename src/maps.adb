@@ -4,7 +4,9 @@ with Gtk.Fixed;       use Gtk.Fixed;
 with Block; use Block;
 with Glib;            use Glib;
 with Game; use Game;
-package body Maps is
+package body Maps
+with SPARK_Mode => Off
+is
 
    function IntegerHash(i: Integer) return Ada.Containers.Hash_Type is
    begin

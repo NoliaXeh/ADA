@@ -4,7 +4,9 @@ with Gtk.Layout;      use Gtk.Layout;
 with Entity;          use Entity;
 with Vector;          use Vector;
 with Physics;          use Physics;
-package Game is
+package Game
+with SPARK_Mode => Off
+is
 
    function Game return Boolean;
    --- Core game loop

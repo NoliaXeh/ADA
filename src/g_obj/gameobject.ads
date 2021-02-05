@@ -1,3 +1,5 @@
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+
 with Entity;
 
 package GameObject is
@@ -10,11 +12,14 @@ package GameObject is
    -- getter
    function getId (Self : in GameObject) return Integer;
    function getSpriteId (Self : in GameObject) return Integer;
-   function getMesh (Self : in GameObject) return Entity.Entity;
+   function getName (Self : in GameObject) return String;
+   function getEntity (Self : in GameObject) return Entity.Entity;
    
    --setter
    procedure setSpriteId (Self : in out GameObject; Value : in Integer);
-   procedure setMesh (Self : in out GameObject; Value : in Entity.Entity);
+   procedure setName (Self : in out GameObject; Value : in String)
+     with Pre => Value'Length > 0;
+   procedure setEntity (Self : in out GameObject; Value : in Entity.Entity);
    
 private
    
@@ -24,13 +29,15 @@ private
    type GameObject is abstract tagged limited record
       Id : Integer := init_id;
       SpriteId : Integer := 0;
+
+      Name : Unbounded_String := To_Unbounded_String("Plum");
       
-      Mesh : Entity.Entity := ( -- Default parameters for Entity
-                      HitBox => (Size => (X => 0.0, Y => 0.0)),
-                      Position => (0.0, 0.0),
-                      Forces => (0.0, 0.0),
-                      Mass => 0.0,
-                      Sprite => null);
+      RigidBody : Entity.Entity := ( -- Default parameters for Entity
+                                     HitBox => (Size => (X => 0.0, Y => 0.0)),
+                                     Position => (0.0, 0.0),
+                                     Forces => (0.0, 0.0),
+                                     Mass => 0.0,
+                                     Sprite => null);
    end record;
 
 end GameObject;

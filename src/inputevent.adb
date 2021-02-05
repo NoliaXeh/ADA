@@ -30,6 +30,8 @@ is
       elsif Key = Gdk_Right then
          Apply_Force(Game.Player, (200.0, 0.0));
          null;
+      --end if;
+      --if Key = Gdk_Space then
       elsif Key = Gdk_Space then
          Apply_Force(Game.Player, (0.0, -100.0));
          null;

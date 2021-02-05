@@ -1,6 +1,7 @@
 with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Integer_Text_IO;           use Ada.Integer_Text_IO;
 with Block;
+with Game; use Game;
 
 with Maps;  use Maps;
 package body file is
@@ -41,13 +42,20 @@ package body file is
                   Blk_tmp.setSpritePath(Value => "grass.png");
                   Blk_tmp.setName(Value => "Grass");
                   Blk_tmp.setNature(Value => 0);
+               elsif Line(j) = 'P' then 
+                  Put_Line("ici");
+                  Game.Player.Position.X := Float(j);
+                  Game.Player.Position.Y := Float(i - j) / Float(Output.width);
+                  Blk_tmp.setSpritePath(Value => "yapas.png");
+                  Blk_tmp.setName(Value => "Air");
+                  Blk_tmp.setNature(Value => 2);
                else
                   Blk_tmp.setSpritePath(Value => "yapas.png");
                   Blk_tmp.setName(Value => "Air");
                   Blk_tmp.setNature(Value => 2);
                end if;
                Blk_tmp.setPosition((X => Float(j),
-                                    Y => Float(i - j) / Float(Output.width)));
+                                    Y => -Float(i - j) / Float(Output.width)));
 
                Output.Map.Include (i, Blk_tmp);
                i := i + 1;

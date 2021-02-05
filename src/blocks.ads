@@ -4,7 +4,9 @@ with Gtk.Window;      use Gtk.Window;
 with Glib;            use Glib;
 with Gtk.Layout;      use Gtk.Layout;
 
-package Block is
+package Blocks is
 
    procedure Place_Block ( Path: String; X: Gint; Y: Gint; Fixed: Gtk_Fixed);
-end Block;
+   procedure Place_Block ( Path: String; X: Gint; Y: Gint; Fixed: Gtk_Layout);
+
+end Blocks;

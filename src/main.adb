@@ -25,6 +25,8 @@ with File;  use File;
 with inputEvent;  use inputEvent;
 with inputEvent;  use inputEvent;
 
+with Sprite;      use Sprite;
+
 --TEST
 WITH Gtk.Main ;          USE Gtk.Main ;
 WITH Gdk.Types ;               USE Gdk.Types;
@@ -73,7 +75,7 @@ begin
 
    --  Create a window with a size of 400x400
    Gtk_New (Win);
-   Win.Set_Default_Size (1920, 1080);
+   Win.Set_Default_Size (Game.Win_Width, Game.Win_Height);
 
    --- Main Layout, only thing attafched to the Window
    Gtk_New (Layout);
@@ -83,7 +85,7 @@ begin
    Gtk_New (Fixed);
    Gtk_New (Fixed_Back);
    Layout.Put (Fixed_Back, 0, 0);
-   Layout.Put (Fixed, -10, -50);
+   Layout.Put (Fixed, 0, 0);
 
    --- Each Layer, attached to Fixed
 
@@ -105,22 +107,33 @@ begin
    Game.Fixed_Front := Fixed_Front;
    Game.Layout := Layout;
 
-   --Fixed_Mid     : Gtk_Fixed;
+   -- Block.Place_Block(Path  => "goku.png",
+   --                   X     => 128,
+   --                   Y     => 128,
+   --                   Fixed => Fixed_Entities);
+
+   -- Fixed_Mid     : Gtk_Fixed;
    Graphics.fill_screen (map    => Output);
    Graphics.set_background (image    => "background.png");
 
    -- Stop the Gtk process when closing the window
    Win.On_Delete_Event (Delete_Event_Cb'Unrestricted_Access);
-   --  Show the window and present it
-   Win.Show_All;
-   Win.Present;
+
 
    --- Setup Globals for the Game Loop
    Game.Fixed := Fixed;
    Game.Fixed_Mid := Fixed_Mid;
    Game.Fixed_Back := Fixed_Back;
    Game.Fixed_Front := Fixed_Front;
+   Game.Fixed_Entities := Fixed_Entities;
    Game.Layout := Layout;
+   Game.Player.Sp := Sprite.Sprite_New ( Path   => "Pink/alienPink_stand.png",
+                                         Panel  => Fixed_Entities,
+                                         Size_X => 64,
+                                         Size_Y => 128);
+   Game.Player.Sp.Panel.Move (Game.Player.Sp.Image, Game.Win_Width / 2 - 32, Game.Win_Height / 2 - 32);
+   Win.Show_All;
+   Win.Present;
    --EVENT
    win.On_Key_Press_Event(Process_Key_Press'Unrestricted_Access);
 
@@ -131,5 +144,7 @@ begin
    ---
 
    --  Start the Gtk+ main loop
+      --  Show the window and present it
+
    Gtk.Main.Main;
 end Main;

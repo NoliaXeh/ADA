@@ -4,7 +4,7 @@ project Default is
 
    type Build_Kind is
       ("static", "static-pic", "relocatable");
-   for Source_Dirs use ("src");
+   for Source_Dirs use ("src", "src/g_obj");
    for Object_Dir use "obj";
    --LIBRARY_TYPE : Build_Kind := external ("LIBRARY_TYPE");
    LIBRARY_TYPE : Build_Kind := "static";
@@ -13,7 +13,7 @@ project Default is
    case LIBRARY_TYPE is
 
       when "static" =>
-         for Main use ("main.adb", "block.adb");
+         for Main use ("main.adb");
 
       when "static-pic" =>
          for Main use ("main.adb");
@@ -21,6 +21,14 @@ project Default is
       when "relocatable" =>
          for Main use ("main.adb");
    end case;
+
+   -- Enable assertions
+   package Builder is
+      for Switches ("ada") use ("-s");
+   end Builder;
+   package Compiler is
+      for Switches ("ada") use ("-gnata");
+   end Compiler;
 
 end Default;
 

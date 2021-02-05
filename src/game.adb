@@ -5,18 +5,21 @@ with Glib;            use Glib;
 with Vector;          use Vector;
 with Physics;         use Physics;
 with Entity;          use Entity;
+with Sprite;          use Sprite;
 
 
 package body Game is
    function Game return Boolean is
    begin
       ---
-      Entity.Update(Object => Object);
+      Put_Line("Game Loop");
+      Player.Mass := 0.0;
+      Entity.Update(Object => Player);
       count := count + 1;
-      Layout.Move (Fixed, Gint(Object.Position.X), Gint(Object.Position.Y));
-      if Object.Position.Y > 380.0 then
-         Object.Forces.Y := - 0.9 * Object.Forces.Y;
-      end if;
+      --Sprite.Move (Player.Sp, Player.Position);
+      Sprite.Move (Player.Sp, (300.0, 300.0));
+      Player.Sp.Panel.Hide;
+      Win.Show_All;
       ---
       return True;
    end;

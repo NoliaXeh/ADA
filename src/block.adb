@@ -24,4 +24,19 @@ package body Block is
                  X      => X,
                  Y      => Y);
    end;
+   procedure Place_Block ( Path: String; X: Gint; Y: Gint; Fixed: Gtk_Layout) is
+      Img: Gtk_Image;
+      Buf: Gdk_Pixbuf;
+      er: Glib.Error.GError;
+   begin
+      Gdk_New_From_File (Buf, path, er);
+      Buf := Scale_Simple(Src         => Buf,
+                          Dest_Width  => 64,
+                          Dest_Height => 64,
+                          Inter_Type  => Interp_Bilinear);
+      Gtk_New (Img, Buf);
+      Fixed.Put(Child_Widget => Img,
+                 X      => X,
+                 Y      => Y);
+   end;
 end Block;

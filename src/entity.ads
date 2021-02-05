@@ -1,6 +1,7 @@
 with Physics;         use Physics;
 with Vector;          use Vector;
 with Gtk.Fixed;       use Gtk.Fixed;
+with Sprite;          use Sprite;
 
 package Entity is
 
@@ -9,7 +10,7 @@ package Entity is
       Position: Vector.Vector;
       Forces: Vector.Vector;
       Mass: Float;
-      Sprite: Gtk_Fixed;
+      Sp: Sprite.Sprite;
    end record;
 
    function Collides ( Object_A: Entity; Object_B: Entity ) return Boolean;

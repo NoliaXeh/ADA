@@ -25,6 +25,8 @@ with File;  use File;
 with inputEvent;  use inputEvent;
 with inputEvent;  use inputEvent;
 
+with Sprite;      use Sprite;
+
 --TEST
 WITH Gtk.Main ;          USE Gtk.Main ;
 WITH Gdk.Types ;               USE Gdk.Types;
@@ -83,7 +85,7 @@ begin
    Gtk_New (Fixed);
    Gtk_New (Fixed_Back);
    Layout.Put (Fixed_Back, 0, 0);
-   Layout.Put (Fixed, -10, -50);
+   Layout.Put (Fixed, 0, 0);
 
    --- Each Layer, attached to Fixed
 
@@ -105,13 +107,17 @@ begin
    Game.Fixed_Front := Fixed_Front;
    Game.Layout := Layout;
 
-   --Fixed_Mid     : Gtk_Fixed;
+   -- Block.Place_Block(Path  => "goku.png",
+   --                   X     => 128,
+   --                   Y     => 128,
+   --                   Fixed => Fixed_Entities);
+
+   -- Fixed_Mid     : Gtk_Fixed;
    Graphics.fill_screen (map    => Output);
    Graphics.set_background (image    => "background.png");
 
    -- Stop the Gtk process when closing the window
    Win.On_Delete_Event (Delete_Event_Cb'Unrestricted_Access);
-   --  Show the window and present it
    Win.Show_All;
    Win.Present;
 
@@ -120,7 +126,16 @@ begin
    Game.Fixed_Mid := Fixed_Mid;
    Game.Fixed_Back := Fixed_Back;
    Game.Fixed_Front := Fixed_Front;
+   Game.Fixed_Entities := Fixed_Entities;
    Game.Layout := Layout;
+   Game.Player.Sp := Sprite.Sprite_New ( Path   => "goku.png",
+                                         Panel  => Fixed_Entities,
+                                         Size_X => 64,
+                                         Size_Y => 64);
+   --Sprite.Set_Visibility( Game.Player.Sp, True);
+   --Sprite.Move(Game.Player.Sp, (256.0, 64.0));
+   --Fixed_Entities.Put(Game.Player.Sp.Image, 100, 100);
+
    --EVENT
    win.On_Key_Press_Event(Process_Key_Press'Unrestricted_Access);
 
@@ -131,5 +146,7 @@ begin
    ---
 
    --  Start the Gtk+ main loop
+      --  Show the window and present it
+
    Gtk.Main.Main;
 end Main;

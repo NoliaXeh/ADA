@@ -7,4 +7,6 @@ with Gtk.Layout;      use Gtk.Layout;
 package Block is
 
    procedure Place_Block ( Path: String; X: Gint; Y: Gint; Fixed: Gtk_Fixed);
+   procedure Place_Block ( Path: String; X: Gint; Y: Gint; Fixed: Gtk_Layout);
+
 end Block;

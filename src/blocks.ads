@@ -7,4 +7,10 @@ with Gtk.Layout;      use Gtk.Layout;
 package Blocks is
 
    procedure Place_Block ( Path: String; X: Gint; Y: Gint; Fixed: Gtk_Fixed);
+<<<<<<< HEAD:src/blocks.ads
 end Blocks;
+=======
+   procedure Place_Block ( Path: String; X: Gint; Y: Gint; Fixed: Gtk_Layout);
+
+end Block;
+>>>>>>> master:src/block.ads

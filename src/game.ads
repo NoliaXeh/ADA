@@ -1,14 +1,18 @@
-
 with Gtk.Fixed;       use Gtk.Fixed;
 with Gtk.Layout;      use Gtk.Layout;
 with Entity;          use Entity;
 with Vector;          use Vector;
-with Physics;          use Physics;
+with Physics;         use Physics;
 with Gtk.Window;      use Gtk.Window;
+with Glib;            use Glib;
+
 package Game is
 
    function Game return Boolean;
    --- Core game loop
+
+   Win_Width   : Gint := 1280;
+   Win_Height  : Gint := 720;
 
    count       : Integer := 0;
    Layout      : Gtk_Layout;

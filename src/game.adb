@@ -18,8 +18,6 @@ package body Game is
       count := count + 1;
       --Sprite.Move (Player.Sp, Player.Position);
       Sprite.Move (Player.Sp, (300.0, 300.0));
-      Player.Sp.Panel.Hide;
-      Win.Show_All;
       ---
       return True;
    end;

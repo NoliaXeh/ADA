@@ -75,7 +75,7 @@ begin
 
    --  Create a window with a size of 400x400
    Gtk_New (Win);
-   Win.Set_Default_Size (1920, 1080);
+   Win.Set_Default_Size (Game.Win_Width, Game.Win_Height);
 
    --- Main Layout, only thing attafched to the Window
    Gtk_New (Layout);
@@ -118,8 +118,7 @@ begin
 
    -- Stop the Gtk process when closing the window
    Win.On_Delete_Event (Delete_Event_Cb'Unrestricted_Access);
-   Win.Show_All;
-   Win.Present;
+
 
    --- Setup Globals for the Game Loop
    Game.Fixed := Fixed;
@@ -128,14 +127,13 @@ begin
    Game.Fixed_Front := Fixed_Front;
    Game.Fixed_Entities := Fixed_Entities;
    Game.Layout := Layout;
-   Game.Player.Sp := Sprite.Sprite_New ( Path   => "goku.png",
+   Game.Player.Sp := Sprite.Sprite_New ( Path   => "Pink/alienPink_stand.png",
                                          Panel  => Fixed_Entities,
                                          Size_X => 64,
-                                         Size_Y => 64);
-   --Sprite.Set_Visibility( Game.Player.Sp, True);
-   --Sprite.Move(Game.Player.Sp, (256.0, 64.0));
-   --Fixed_Entities.Put(Game.Player.Sp.Image, 100, 100);
-
+                                         Size_Y => 128);
+   Game.Player.Sp.Panel.Move (Game.Player.Sp.Image, Game.Win_Width / 2 - 32, Game.Win_Height / 2 - 32);
+   Win.Show_All;
+   Win.Present;
    --EVENT
    win.On_Key_Press_Event(Process_Key_Press'Unrestricted_Access);
 

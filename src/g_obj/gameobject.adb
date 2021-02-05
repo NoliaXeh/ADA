@@ -25,6 +25,11 @@ package body GameObject is
       Self.RigidBody := Value;
    end setEntity;
    
+   procedure setPosition (Self : in out GameObject; Position : Vector.Vector) is
+   begin
+      Self.RigidBody.Position := Position;
+   end setPosition;
+   
    -- private
    function init_id return Integer is
       Id : Integer := Counter;

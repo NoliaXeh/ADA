@@ -1,6 +1,7 @@
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 with Entity;
+with Vector;
 
 package GameObject is
    
@@ -21,6 +22,7 @@ package GameObject is
    procedure setName (Self : in out GameObject; Value : in String)
      with Pre => Value'Length > 0;
    procedure setEntity (Self : in out GameObject; Value : in Entity.Entity);
+   procedure setPosition (Self : in out GameObject; Position : Vector.Vector);
    
 private
    

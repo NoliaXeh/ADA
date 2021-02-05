@@ -22,27 +22,27 @@ package body file is
          begin
             for j in 1..Output.width loop
                if Line(j) = 'S' then
-                  TAMAMAN.setSpriteId(Value => 0);
+                  TAMAMAN.setSpritePath(Value => "sand.png");
                   TAMAMAN.setName(Value => "Sand");
                   TAMAMAN.setNature(Value => 0);
                elsif Line(j) = 'W' then 
-                  TAMAMAN.setSpriteId(Value => 0);
+                  TAMAMAN.setSpritePath(Value => "water.png");
                   TAMAMAN.setName(Value => "Water");
                   TAMAMAN.setNature(Value => 1);
                elsif Line(j) = 'C' then 
-                  TAMAMAN.setSpriteId(Value => 0);
+                  TAMAMAN.setSpritePath(Value => "stone.png");
                   TAMAMAN.setName(Value => "Cobble");
                   TAMAMAN.setNature(Value => 0);
                elsif Line(j) = 'T' then 
-                  TAMAMAN.setSpriteId(Value => 0);
+                  TAMAMAN.setSpritePath(Value => "dirt.png");
                   TAMAMAN.setName(Value => "Dirt");
                   TAMAMAN.setNature(Value => 0);
                elsif Line(j) = 'G' then 
-                  TAMAMAN.setSpriteId(Value => 0);
+                  TAMAMAN.setSpritePath(Value => "grass.png");
                   TAMAMAN.setName(Value => "Grass");
                   TAMAMAN.setNature(Value => 0);
                else
-                  TAMAMAN.setSpriteId(Value => 0);
+                  TAMAMAN.setSpritePath(Value => "yapas.png");
                   TAMAMAN.setName(Value => "Air");
                   TAMAMAN.setNature(Value => 2);
                end if;

@@ -16,7 +16,8 @@ package GameObject is
    function getEntity (Self : in GameObject) return Entity.Entity;
    
    --setter
-   procedure setSpritePath (Self : in out GameObject; Value : in String);
+   procedure setSpritePath (Self : in out GameObject; Value : in String)
+     with Pre => Value'Length > 0;
    procedure setName (Self : in out GameObject; Value : in String)
      with Pre => Value'Length > 0;
    procedure setEntity (Self : in out GameObject; Value : in Entity.Entity);

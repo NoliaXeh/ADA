@@ -17,7 +17,7 @@ is
    begin
       for i in 0..map.height-1 loop
          for j in 0..map.width-1 loop
-            Put(map.map.Element(i*map.width+j));
+            Put(map.map.Element(i*map.width+j).getName(1));
          end loop;
          Put_Line("");
       end loop;
@@ -27,36 +27,39 @@ is
    begin
       for i in 0..map.height-1 loop
          for j in 0..map.width-1 loop
-            case map.map.Element(i*map.width+j) is
-               when 'G' =>
-                    Blocks.Place_Block(Path  => "grass.png",
+            if map.map.Element(i*map.width+j).getName = "Grass" then
+                  Blocks.Place_Block(Path  => "grass.png",
                               X     => Gint(j * 64),
                               Y     => Gint(i * 64),
                                       Fixed => Game.Fixed_Mid);
-               when 'S' => 
+            elsif map.map.Element(i*map.width+j).getName = "Sand" then
                   Blocks.Place_Block(Path  => "sand.png",
                               X     => Gint(j * 64),
                               Y     => Gint(i * 64),
                                     Fixed => Game.Fixed_Mid);
-               when 'T' => 
+            elsif map.map.Element(i*map.width+j).getName = "Dirt" then
                   Blocks.Place_Block(Path  => "dirt.png",
                               X     => Gint(j * 64),
                               Y     => Gint(i * 64),
                                     Fixed => Game.Fixed_Mid);
-               when 'W' => 
+            elsif map.map.Element(i*map.width+j).getName = "Water" then
                   Blocks.Place_Block(Path  => "water.png",
                               X     => Gint(j * 64),
                               Y     => Gint(i * 64),
                                     Fixed => Game.Fixed_Front);
-               when 'C' => 
+            elsif map.map.Element(i*map.width+j).getName = "Cobble" then
                   Blocks.Place_Block(Path  => "stone.png",
                               X     => Gint(j * 64),
                               Y     => Gint(i * 64),
                                     Fixed => Game.Fixed_Mid);
-                  when others => null;
-            end case;
+            end if;
          end loop;
       end loop;
    end fill_screen;
+   
+   function Get(X : integer; Y : integer) return Block.Block is
+   begin
+      return Game.Map.map.Element(Y*Game.Map.width+X);
+   end Get;
    
 end Maps;

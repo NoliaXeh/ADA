@@ -15,9 +15,9 @@ package body Game is
       Put_Line("Game Loop");
       Player.Mass := 0.0;
       Entity.Update(Object => Player);
-      count := count + 1;
-      --Sprite.Move (Player.Sp, Player.Position);
-      Sprite.Move (Player.Sp, (300.0, 300.0));
+
+      --- Move all fixed to "follow" player
+
       ---
       return True;
    end;

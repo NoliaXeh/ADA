@@ -13,7 +13,7 @@ project Default is
    case LIBRARY_TYPE is
 
       when "static" =>
-         for Main use ("main.adb", "block.adb");
+         for Main use ("main.adb");
 
       when "static-pic" =>
          for Main use ("main.adb");

@@ -18,37 +18,37 @@ package body file is
       loop
          declare
             Line : String := Get_Line (Input);
-            TAMAMAN : Block.Block;
+            Blk_tmp : Block.Block;
          begin
             for j in 1..Output.width loop
                if Line(j) = 'S' then
-                  TAMAMAN.setSpritePath(Value => "sand.png");
-                  TAMAMAN.setName(Value => "Sand");
-                  TAMAMAN.setNature(Value => 0);
+                  Blk_tmp.setSpritePath(Value => "sand.png");
+                  Blk_tmp.setName(Value => "Sand");
+                  Blk_tmp.setNature(Value => 0);
                elsif Line(j) = 'W' then 
-                  TAMAMAN.setSpritePath(Value => "water.png");
-                  TAMAMAN.setName(Value => "Water");
-                  TAMAMAN.setNature(Value => 1);
+                  Blk_tmp.setSpritePath(Value => "water.png");
+                  Blk_tmp.setName(Value => "Water");
+                  Blk_tmp.setNature(Value => 1);
                elsif Line(j) = 'C' then 
-                  TAMAMAN.setSpritePath(Value => "stone.png");
-                  TAMAMAN.setName(Value => "Cobble");
-                  TAMAMAN.setNature(Value => 0);
+                  Blk_tmp.setSpritePath(Value => "stone.png");
+                  Blk_tmp.setName(Value => "Cobble");
+                  Blk_tmp.setNature(Value => 0);
                elsif Line(j) = 'T' then 
-                  TAMAMAN.setSpritePath(Value => "dirt.png");
-                  TAMAMAN.setName(Value => "Dirt");
-                  TAMAMAN.setNature(Value => 0);
+                  Blk_tmp.setSpritePath(Value => "dirt.png");
+                  Blk_tmp.setName(Value => "Dirt");
+                  Blk_tmp.setNature(Value => 0);
                elsif Line(j) = 'G' then 
-                  TAMAMAN.setSpritePath(Value => "grass.png");
-                  TAMAMAN.setName(Value => "Grass");
-                  TAMAMAN.setNature(Value => 0);
+                  Blk_tmp.setSpritePath(Value => "grass.png");
+                  Blk_tmp.setName(Value => "Grass");
+                  Blk_tmp.setNature(Value => 0);
                else
-                  TAMAMAN.setSpritePath(Value => "yapas.png");
-                  TAMAMAN.setName(Value => "Air");
-                  TAMAMAN.setNature(Value => 2);
+                  Blk_tmp.setSpritePath(Value => "yapas.png");
+                  Blk_tmp.setName(Value => "Air");
+                  Blk_tmp.setNature(Value => 2);
                end if;
                
 
-               Output.Map.Include (i, TAMAMAN);
+               Output.Map.Include (i, Blk_tmp);
                i := i + 1;
             end loop;
          end;

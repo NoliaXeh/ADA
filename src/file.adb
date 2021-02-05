@@ -1,5 +1,6 @@
 with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Integer_Text_IO;           use Ada.Integer_Text_IO;
+with Block;
 
 with Maps;  use Maps;
 package body file is
@@ -17,9 +18,37 @@ package body file is
       loop
          declare
             Line : String := Get_Line (Input);
+            TAMAMAN : Block.Block;
          begin
             for j in 1..Output.width loop
-               Output.Map.Include (i, Line(j));
+               if Line(j) = 'S' then
+                  TAMAMAN.setSpriteId(Value => 0);
+                  TAMAMAN.setName(Value => "Sand");
+                  TAMAMAN.setNature(Value => 0);
+               elsif Line(j) = 'W' then 
+                  TAMAMAN.setSpriteId(Value => 0);
+                  TAMAMAN.setName(Value => "Water");
+                  TAMAMAN.setNature(Value => 1);
+               elsif Line(j) = 'C' then 
+                  TAMAMAN.setSpriteId(Value => 0);
+                  TAMAMAN.setName(Value => "Cobble");
+                  TAMAMAN.setNature(Value => 0);
+               elsif Line(j) = 'T' then 
+                  TAMAMAN.setSpriteId(Value => 0);
+                  TAMAMAN.setName(Value => "Dirt");
+                  TAMAMAN.setNature(Value => 0);
+               elsif Line(j) = 'G' then 
+                  TAMAMAN.setSpriteId(Value => 0);
+                  TAMAMAN.setName(Value => "Grass");
+                  TAMAMAN.setNature(Value => 0);
+               else
+                  TAMAMAN.setSpriteId(Value => 0);
+                  TAMAMAN.setName(Value => "Air");
+                  TAMAMAN.setNature(Value => 2);
+               end if;
+               
+
+               Output.Map.Include (i, TAMAMAN);
                i := i + 1;
             end loop;
          end;

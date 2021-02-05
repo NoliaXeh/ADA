@@ -7,7 +7,7 @@ package GameObject is
    Counter : Integer := 0;
    -- Contains the total number of game objects ever created
    
-   type GameObject is abstract tagged limited private;
+   type GameObject is abstract tagged private;
    
    -- getter
    function getId (Self : in GameObject) return Integer;
@@ -26,7 +26,7 @@ private
    function init_id return Integer;
    -- Id := Counter then Counter + 1; return Id
    
-   type GameObject is abstract tagged limited record
+   type GameObject is abstract tagged record
       Id : Integer := init_id;
       
       SpritePath : Unbounded_String := To_Unbounded_String("Pink/alienPink_stand.png");

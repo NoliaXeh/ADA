@@ -1,4 +1,6 @@
-package Vector is
+package Vector 
+with SPARK_Mode => On
+is
 
    type Vector is record
       X, Y: Float;

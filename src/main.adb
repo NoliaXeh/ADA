@@ -70,6 +70,7 @@ procedure Main is
 begin
    File.Read_File (Output => Output);
    Maps.print(map =>Output);
+   Game.Map := Output;
    --  Initialize GtkAda.
    Gtk.Main.Init;
 

@@ -1,6 +1,8 @@
 with Vector; use Vector;
 
-package Physics is
+package Physics
+with SPARK_Mode => On
+is
 
    type HitBox is record
       Size: Vector.Vector;

@@ -37,7 +37,14 @@ private
                                      Position => (0.0, 0.0),
                                      Forces => (0.0, 0.0),
                                      Mass => 0.0,
-                                     Sprite => null);
+                                     Sp => --null                                       -- Sprite: Sprite.Sprite;
+                                     (
+                                      Image    => null,
+                                      Panel    => null,
+                                      Visible  => True,
+                                      Position => (64.0, 64.0)
+                                          )
+                                     );
    end record;
 
 end GameObject;

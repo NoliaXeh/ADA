@@ -24,9 +24,6 @@ package body Blocks is
                  X      => X,
                  Y      => Y);
    end;
-<<<<<<< HEAD:src/blocks.adb
-end Blocks;
-=======
    procedure Place_Block ( Path: String; X: Gint; Y: Gint; Fixed: Gtk_Layout) is
       Img: Gtk_Image;
       Buf: Gdk_Pixbuf;
@@ -42,5 +39,4 @@ end Blocks;
                  X      => X,
                  Y      => Y);
    end;
-end Block;
->>>>>>> master:src/block.adb
+end Blocks;

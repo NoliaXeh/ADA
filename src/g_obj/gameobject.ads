@@ -11,12 +11,12 @@ package GameObject is
    
    -- getter
    function getId (Self : in GameObject) return Integer;
-   function getSpriteId (Self : in GameObject) return Integer;
+   function getSpritePath (Self : in GameObject) return String;
    function getName (Self : in GameObject) return String;
    function getEntity (Self : in GameObject) return Entity.Entity;
    
    --setter
-   procedure setSpriteId (Self : in out GameObject; Value : in Integer);
+   procedure setSpritePath (Self : in out GameObject; Value : in String);
    procedure setName (Self : in out GameObject; Value : in String)
      with Pre => Value'Length > 0;
    procedure setEntity (Self : in out GameObject; Value : in Entity.Entity);
@@ -28,8 +28,8 @@ private
    
    type GameObject is abstract tagged limited record
       Id : Integer := init_id;
-      SpriteId : Integer := 0;
-
+      
+      SpritePath : Unbounded_String := To_Unbounded_String("Pink/alienPink_stand.png");
       Name : Unbounded_String := To_Unbounded_String("Plum");
       
       RigidBody : Entity.Entity := ( -- Default parameters for Entity
@@ -37,14 +37,14 @@ private
                                      Position => (0.0, 0.0),
                                      Forces => (0.0, 0.0),
                                      Mass => 0.0,
-                                     Sp => --null                                       -- Sprite: Sprite.Sprite;
+                                     Sp => -- Sprite.Sprite
                                      (
                                       Image    => null,
                                       Panel    => null,
                                       Visible  => True,
                                       Position => (64.0, 64.0)
-                                          )
-                                     );
+                                     )
+                                    );
    end record;
 
 end GameObject;

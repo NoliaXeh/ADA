@@ -34,7 +34,7 @@ private
       Name : Unbounded_String := To_Unbounded_String("Plum");
       
       RigidBody : Entity.Entity := ( -- Default parameters for Entity
-                                     HitBox => (Size => (X => 0.0, Y => 0.0)),
+                                     HitBox => (Size => (X => 64.0, Y => 64.0)),
                                      Position => (0.0, 0.0),
                                      Forces => (0.0, 0.0),
                                      Mass => 0.0,

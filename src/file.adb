@@ -46,7 +46,8 @@ package body file is
                   Blk_tmp.setName(Value => "Air");
                   Blk_tmp.setNature(Value => 2);
                end if;
-               
+               Blk_tmp.getEntity.Position.X := j;
+               Blk_tmp.getEntity.Position.Y := (i - j) / Output.width;
 
                Output.Map.Include (i, Blk_tmp);
                i := i + 1;

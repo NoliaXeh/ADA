@@ -19,6 +19,13 @@ is
       Key: Gdk.Types.Gdk_Key_type;
       pragma Unreferenced (Self);
    begin
+      if (not Game.Start) then
+         Game.Start := True;
+         Game.Fixed_Start.Set_Visible(False);
+         Game.Delta_Time := 1.0 / 60.0;
+         return True;
+      end if;
+
       Key := Event.Keyval;
       if Key = Gdk_Down then
          null;
@@ -30,6 +37,15 @@ is
          null;
       elsif Key = Gdk_Right then
          Game.Right := True;
+         null;
+      elsif Key = GDK_Escape then
+         if Game.Delta_Time = 0.0 then
+            Game.Fixed_Pause.Set_Visible(False);
+            Game.Delta_Time := 1.0 / 60.0;
+         else
+            Game.Fixed_Pause.Set_Visible(True);
+            Game.Delta_Time := 0.0;
+         end if;
          null;
       --end if;
       --if Key = Gdk_Space then

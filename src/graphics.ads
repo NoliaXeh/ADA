@@ -8,7 +8,7 @@ is
    procedure fill_screen(map: in Maps.Map)
       with
          Pre => map.height /= 0 and map.width /= 0;
-   procedure set_background(image: in String)
+   procedure set_image(panel : Gtk_Fixed; image: in String)
      with
        Pre => File.File_Exist(image);
 

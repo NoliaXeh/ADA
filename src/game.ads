@@ -19,8 +19,11 @@ is
 
    count       : Integer := 0;
    Layout      : Gtk_Layout;
+   Start       : Boolean;
 
    Fixed       : Gtk_Fixed;
+   Fixed_Start : Gtk_Fixed;
+   Fixed_Pause : Gtk_Fixed;
    Fixed_Mid   : Gtk_Fixed;
    Fixed_Back  : Gtk_Fixed;
    Fixed_Front : Gtk_Fixed;

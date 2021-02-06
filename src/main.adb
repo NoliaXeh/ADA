@@ -44,6 +44,8 @@ procedure Main is
    Fixed_Mid     : Gtk_Fixed;
    Fixed_Entities: Gtk_Fixed;
    Fixed_Front   : Gtk_Fixed;
+   Fixed_Start   : Gtk_Fixed;
+   Fixed_Pause   : Gtk_Fixed;
    osef          : G_Source_Id;
 
    function Delete_Event_Cb
@@ -93,6 +95,8 @@ begin
    Gtk_New (Fixed_Mid);
    Gtk_New (Fixed_Entities);
    Gtk_New (Fixed_Front);
+   Gtk_New (Fixed_Start);
+   Gtk_New (Fixed_Pause);
 
 
    Fixed.Put (Fixed_Mid, 0, 0);
@@ -115,7 +119,16 @@ begin
 
    -- Fixed_Mid     : Gtk_Fixed;
    Graphics.fill_screen (map    => Output);
-   Graphics.set_background (image    => "background.png");
+   Graphics.set_image (panel => Fixed_Back, image    => "background.png");
+   Graphics.set_image (panel => Fixed_Start, image    => "background.png");
+   Graphics.set_image (panel => Fixed_Start, image    => "Start.png");
+   Graphics.set_image (panel => Fixed_Pause, image    => "Pause.png");
+   Layout.Put(Child_Widget => Fixed_Start,
+              X            => 0,
+              Y            => 0);
+   Layout.Put(Child_Widget => Fixed_Pause,
+              X            => 0,
+              Y            => 0);
 
    -- Stop the Gtk process when closing the window
    Win.On_Delete_Event (Delete_Event_Cb'Unrestricted_Access);
@@ -127,19 +140,27 @@ begin
    Game.Fixed_Back := Fixed_Back;
    Game.Fixed_Front := Fixed_Front;
    Game.Fixed_Entities := Fixed_Entities;
+   Game.Fixed_Start := Fixed_Start;
+   Game.Fixed_Pause := Fixed_Pause;
+   Game.Start := False;
    Game.Layout := Layout;
    Game.Player.Sp := Sprite.Sprite_New ( Path   => "Pink/hitbox.png", --"Pink/alienPink_stand.png",
                                          Panel  => Fixed_Entities,
                                          Size_X => 64,
                                          Size_Y => 128);
-   Game.Player.Sp.Panel.Move (Game.Player.Sp.Image, Game.Win_Width / 2 - 32, Game.Win_Height / 2 - 64);
+   Game.Player.Sp.Panel.Move (Game.Player.Sp.Image, Game.Win_Width / 2, Game.Win_Height / 2 -64);
    Game.Player.Position := (128.0, 128.0);
    Game.Player.Forces := (1.0, 0.0);
+   Game.Delta_Time := 0.0;
    Win.Show_All;
    Win.Present;
+   Fixed_Pause.Set_Visible(False);
    --EVENT
    win.On_Key_Press_Event(Process_Key_Press'Unrestricted_Access);
    win.On_Key_Release_Event(Process_Key_Release'Unrestricted_Access);
+
+
+
 
    --- Setting up game Loop, ignore returned value
    --- 60 FPS => 1000/60 ms between each frames => 16ms

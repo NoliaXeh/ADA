@@ -23,11 +23,14 @@ is
       if Key = Gdk_Down then
          null;
       elsif Key = Gdk_Up then
+         Game.Up := True;
          null;
       elsif Key = Gdk_Left then
+         --Game.Left := True;
          Apply_Force(Game.Player, (-200.0, 0.0));
          null;
       elsif Key = Gdk_Right then
+         --Game.Right := True;
          Apply_Force(Game.Player, (200.0, 0.0));
          null;
       --end if;
@@ -39,6 +42,26 @@ is
       end if;
       return True;
    end Process_Key_Press;
+
+   function Process_Key_Release( Self: access Gtk_Widget_Record'Class;
+                                Event: Gdk.Event.Gdk_Event_Key ) return Boolean is
+      Key: Gdk.Types.Gdk_Key_type;
+      pragma Unreferenced (Self);
+   begin
+      Key := Event.Keyval;
+      if Key = Gdk_Left then
+         Game.Left := False;
+         null;
+      elsif Key = Gdk_Right then
+         Game.Right := False;
+         null;
+      elsif Key = Gdk_Space then
+         Game.Up := False;
+         null;
+      end if;
+      return True;
+   end Process_Key_Release;
+
 
 
 end inputEvent;

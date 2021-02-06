@@ -27,6 +27,9 @@ is
    Fixed_Entities : Gtk_Fixed;
    Win           : Gtk_Window;
    Map         : Maps.Map;
+   Right : Boolean := False;
+   Left : Boolean := False;
+   Up : Boolean := False;
 
    Delta_Time  : Float := 1.0 / 60.0; -- 60 FPS
    Gravity     : Float := 9.8;

@@ -139,6 +139,7 @@ begin
    Win.Present;
    --EVENT
    win.On_Key_Press_Event(Process_Key_Press'Unrestricted_Access);
+   win.On_Key_Release_Event(Process_Key_Release'Unrestricted_Access);
 
    --- Setting up game Loop, ignore returned value
    --- 60 FPS => 1000/60 ms between each frames => 16ms

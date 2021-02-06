@@ -128,7 +128,7 @@ begin
    Game.Fixed_Front := Fixed_Front;
    Game.Fixed_Entities := Fixed_Entities;
    Game.Layout := Layout;
-   Game.Player.Sp := Sprite.Sprite_New ( Path   => "Pink/alienPink_stand.png",
+   Game.Player.Sp := Sprite.Sprite_New ( Path   => "Pink/hitbox.png", --"Pink/alienPink_stand.png",
                                          Panel  => Fixed_Entities,
                                          Size_X => 64,
                                          Size_Y => 128);

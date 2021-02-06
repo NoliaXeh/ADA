@@ -10,9 +10,17 @@ is
                       B_Pos: Vector.Vector)
                       return Boolean is
    --- Test if 2 hitboxes collide at given positions
+      A_Center : Vector.Vector;
+      B_Center : Vector.Vector;
    begin
-      return A_Pos.X < B_Pos.X + B.Size.X and A_Pos.X + A.Size.X > B_Pos.X
-         and A_Pos.Y < B_Pos.Y + B.Size.Y and A_Pos.Y + A.Size.Y > B_Pos.Y;
+      A_Center.X := A_Pos.X + A.Size.X / 2.0;
+      A_Center.Y := A_Pos.Y + A.Size.Y / 2.0;
+      B_Center.X := B_Pos.X + B.Size.X / 2.0;
+      B_Center.Y := B_Pos.Y + B.Size.Y / 2.0;
+
+      return A_Center.X < B_Center.X + B.Size.X and A_Center.X + A.Size.X > B_Center.X
+         and A_Center.Y < B_Center.Y + B.Size.Y and A_Center.Y + A.Size.Y > B_Center.Y;
+
    end;
 
    -- function Collides (A    : HitBox;

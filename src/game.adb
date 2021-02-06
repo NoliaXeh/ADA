@@ -77,15 +77,30 @@ is
          B := Maps.Get(X => X,
                        Y => Y - 1);
          Put("B (top):  ");
-         Put(Integer(B.getEntity.Position.X));
+         Put(Integer(Player.Position.Y));
          Put(", ");
-         Put(Integer(B.getEntity.Position.Y));
+         Put(Integer(B.getEntity.Position.Y + B.getEntity.HitBox.Size.Y));
          Put_Line("");
          Put (B.getNature); Put_Line("");
-         if B.getNature /= 2 and then Entity.Collides(Player, B.getEntity) then
-            Put ("Ouch");
+         if B.getNature /= 2 and then Player.Position.Y <= (B.getEntity.Position.Y + B.getEntity.HitBox.Size.Y) then
+            Put_Line ("Ouch\n");
             Player.Forces.Y := 2.0;
-            Player.Position.Y := B.getEntity.Position.Y + 66.0;
+            Player.Position.Y := Player.Position.Y - (Player.Position.Y - (B.getEntity.Position.Y + B.getEntity.HitBox.Size.Y));
+         else
+            -- Right
+            B := Maps.Get(X => X,
+                          Y => Y);
+            if B.getNature /= 2 and then Player.Position.X + Player.HitBox.Size.X >= (B.getEntity.Position.X) then
+               Player.Forces.X := -2.0;
+               Player.Position.X := Player.Position.X - (Player.Position.X + Player.HitBox.Size.X - (B.getEntity.Position.X));
+            end if;
+            -- Left
+            B := Maps.Get(X => X - 1,
+                          Y => Y);
+            if B.getNature /= 2 and then Player.Position.X <= (B.getEntity.Position.X + B.getEntity.HitBox.Size.X) then
+               Player.Forces.X := 2.0;
+               Player.Position.X := Player.Position.X - (Player.Position.X - (B.getEntity.Position.X + B.getEntity.HitBox.Size.X));
+            end if;
          end if;
       end if;
       if Up and not Jump_Lock then
@@ -96,7 +111,7 @@ is
       --- Move all fixed to "follow" player
 
       Layout.Move(Child_Widget => Fixed,
-                  X            => Gint(- Player.Position.X) + Win_Width / 2,
+                  X            => Gint(- Player.Position.X + 32.0) + Win_Width / 2,
                   Y            => Gint(- Player.Position.Y) + Win_Height / 2);
 
       ---

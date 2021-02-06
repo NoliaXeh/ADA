@@ -18,6 +18,7 @@ is
       Y: Integer;
    begin
       ---
+      Put_Line("--");
       Put("Player Pos: ");
       Put(Player.Position.X);
       Put(", ");
@@ -37,15 +38,33 @@ is
       X := Integer(Player.Position.X) / 64;
       Y := Integer(Player.Position.Y) / 64;
 
-      B := Maps.Get(X => X,
+      if X < Map.width and X >= 0 and Y+1 < Map.height and Y >= 0 then
+         Put("Player Pos int: ");
+         Put(X);
+         Put(", ");
+         Put(Y);
+         Put_Line("");
+
+         B := Maps.Get(X => X,
                     Y => Y + 1);
-      Put("B: ");
-      Put(B.getEntity.Position.X);
-      Put(", ");
-      Put(B.getEntity.Position.Y);
-      Put_Line("");
-      if Entity.Collides(B.getEntity, Player) then
-         Player.Forces.Y := -1.0;
+
+         Put("B: ");
+         Put(Integer(B.getEntity.Position.X) / 64);
+         Put(", ");
+         Put(Integer(B.getEntity.Position.Y) / 64);
+         Put(", ");
+         Put_Line(B.getName);
+         Put("B.hitbox: ");
+         Put(Integer(B.getEntity.HitBox.Size.X) / 64);
+         Put(", ");
+         Put(Integer(B.getEntity.HitBox.Size.Y) / 64);
+         Put(", ");
+         Put_Line(B.getName);
+         if Entity.Collides(B.getEntity, Player) then
+            Player.Forces.Y := -Gravity*Delta_Time*Player.Mass;
+         end if;
+      else
+         Player.Forces.Y := -Gravity*Delta_Time*Player.Mass;
       end if;
       Entity.Update(Object => Player);
       --- Move all fixed to "follow" player

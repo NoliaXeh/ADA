@@ -5,7 +5,9 @@ with Gtk.Image; use Gtk.Image;
 
 with GameObject;
 
-package Block is
+package Block
+with SPARK_Mode => Off -- GTK
+is
 
    type Block is new GameObject.GameObject with private;
    

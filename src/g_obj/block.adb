@@ -2,7 +2,9 @@ with Gdk.Pixbuf; use Gdk.Pixbuf;
 with Glib.Error; use Glib.Error;
 with Glib; use Glib;
 
-package body Block is
+package body Block
+with SPARK_Mode => Off -- GTK
+is
    
    procedure placeBlock (Self : in Block; Layer : in out Gtk_Fixed) is
       Buff : Gdk_Pixbuf;

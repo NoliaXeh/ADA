@@ -1,7 +1,9 @@
 with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 
-package body GameObject is
+package body GameObject
+with SPARK_Mode => Off
+is
    
    -- getter
    function getId (Self : in GameObject) return Integer is (Self.Id);

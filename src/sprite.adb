@@ -11,7 +11,9 @@ with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Float_Text_IO; use Ada.Float_Text_IO;
 
-package body Sprite is
+package body Sprite
+with SPARK_Mode => Off -- GTK
+is
 
    function Sprite_New (Path: String; Panel: Gtk_Fixed; Size_X : Gint; Size_Y: Gint) return Sprite is
       Img: Gtk_Image;

@@ -3,7 +3,9 @@ with Vector;          use Vector;
 with Gtk.Fixed;       use Gtk.Fixed;
 with Sprite;          use Sprite;
 
-package Entity is
+package Entity
+with SPARK_Mode => Off -- SPRITE
+is
 
    type Entity is record
       HitBox: Physics.HitBox;

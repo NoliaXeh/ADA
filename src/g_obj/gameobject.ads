@@ -3,7 +3,9 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Entity;
 with Vector;
 
-package GameObject is
+package GameObject
+with SPARK_Mode => Off -- Entity and Pre ?
+is
    
    Counter : Integer := 0;
    -- Contains the total number of game objects ever created

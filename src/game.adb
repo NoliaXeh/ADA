@@ -31,9 +31,12 @@ is
       Put_Line("");
       Player.Mass := 100.0;
 
-
-
-
+      if Right then
+         Entity.Apply_Force(Player, (100.0, 0.0));
+      end if;
+      if Left then
+         Entity.Apply_Force(Player, (-100.0, 0.0));
+      end if;
       --- [TBM] Update collision
       X := Integer(Player.Position.X) / 64;
       Y := Integer(Player.Position.Y) / 64;
@@ -50,6 +53,7 @@ is
          if B.getNature /= 2 and then Entity.Collides(B.getEntity, Player) then
             Entity.Apply_Force(Player, (0.0, -Player.Forces.Y));
             Player.Position.Y := B.getEntity.Position.Y - 62.0;
+            Jump_Lock := False;
          end if;
          -- Top
          B := Maps.Get(X => X,
@@ -60,6 +64,10 @@ is
             Player.Forces.Y := 2.0;
             Player.Position.Y := B.getEntity.Position.Y + 62.0;
          end if;
+      end if;
+      if Up and not Jump_Lock then
+         Entity.Apply_Force(Player, (0.0, -500.00));
+         Jump_Lock := True;
       end if;
       Entity.Update(Object => Player);
       --- Move all fixed to "follow" player

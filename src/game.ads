@@ -31,6 +31,8 @@ is
    Left : Boolean := False;
    Up : Boolean := False;
 
+   Jump_Lock : Boolean := False;
+
    Delta_Time  : Float := 1.0 / 60.0; -- 60 FPS
    Gravity     : Float := 9.8;
 

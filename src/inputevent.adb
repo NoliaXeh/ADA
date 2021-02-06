@@ -26,18 +26,17 @@ is
          Game.Up := True;
          null;
       elsif Key = Gdk_Left then
-         --Game.Left := True;
-         Apply_Force(Game.Player, (-200.0, 0.0));
+         Game.Left := True;
          null;
       elsif Key = Gdk_Right then
-         --Game.Right := True;
-         Apply_Force(Game.Player, (200.0, 0.0));
+         Game.Right := True;
          null;
       --end if;
       --if Key = Gdk_Space then
       elsif Key = Gdk_Space then
-         Game.Player.Position.Y := Game.Player.Position.Y - 0.2;
-         Apply_Force(Game.Player, (0.0, -640.0));
+         Game.Up := True;
+         --Game.Player.Position.Y := Game.Player.Position.Y - 0.2;
+         --Apply_Force(Game.Player, (0.0, -640.0));
          null;
       end if;
       return True;
@@ -55,7 +54,7 @@ is
       elsif Key = Gdk_Right then
          Game.Right := False;
          null;
-      elsif Key = Gdk_Space then
+      elsif Key = Gdk_Space or Key = Gdk_Up then
          Game.Up := False;
          null;
       end if;

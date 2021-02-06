@@ -54,8 +54,10 @@ is
          -- Top
          B := Maps.Get(X => X,
                        Y => Y - 1);
+         Put (B.getNature); Put_Line("");
          if B.getNature /= 2 and then Entity.Collides(B.getEntity, Player) then
-            Player.Forces.Y := -2.0;
+            Put ("Ouch");
+            Player.Forces.Y := 2.0;
             Player.Position.Y := B.getEntity.Position.Y + 62.0;
          end if;
       end if;

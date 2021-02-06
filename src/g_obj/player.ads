@@ -8,10 +8,13 @@ is
 
    type Player is new GameObject.GameObject with private;
    
+   type Index is range 1..6;
+   
    -- getter
    function getMaxHp (Self : in Player) return Float;
    function getHp (Self : in Player) return Float;
    function getSpeed (Self : in Player) return Float;
+   function getAnimationSprite(Self : in Player; idx : Index) return Gtk_Fixed;
    
    -- setter
    procedure setMaxHp (Self : in out Player; Value : in Float)
@@ -21,7 +24,7 @@ is
    procedure setSpeed (Self : in out Player; Value : in Float);
    
 private
-   type Index is range 1..6;
+   --type Index is range 1..6;
    type list is array (Index) of Gtk_Fixed;
       
    function load_sprite (path : String) return Gtk_Fixed;

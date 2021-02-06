@@ -11,6 +11,8 @@ is
    function getMaxHp (Self : in Player) return Float is (Self.MaxHp);
    function getHp (Self : in Player) return Float is (Self.Hp);
    function getSpeed (Self : in Player) return Float is (Self.Speed);
+   function getAnimationSprite(Self : in Player; idx : Index) return Gtk_Fixed is
+     (Self.spriteList(idx));
    
    -- setter
    procedure setMaxHp (Self : in out Player; Value : in Float) is

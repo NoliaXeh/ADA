@@ -5,14 +5,25 @@ with Game; use Game;
 
 with Maps;  use Maps;
 package body file is
+   
+   function File_Exist (Name : String) return Boolean is
+      File : Ada.Text_IO.File_Type;
+   begin
+      Open (File, In_File, Name);
+      Close (File);
+      return True;
+   exception
+      when Name_Error =>
+         return False;
+   end File_Exist;
 
-   procedure Read_File(Output: out Maps.Map) is
+   procedure Read_File(Path:String; Output: out Maps.Map) is
       Input : File_Type;
       i : Integer;
    begin
       Open (File => Input,
             Mode => In_File,
-            Name => "src/map.txt");
+            Name => Path);
       i := 0;
       Output.height := Integer'Value (Get_Line (Input));
       Output.width := Integer'Value (Get_Line (Input));
@@ -43,7 +54,6 @@ package body file is
                   Blk_tmp.setName(Value => "Grass");
                   Blk_tmp.setNature(Value => 0);
                elsif Line(j) = 'P' then 
-                  Put_Line("ici");
                   Game.Player.Position.X := Float(j);
                   Game.Player.Position.Y := Float(i - j) / Float(Output.width);
                   Blk_tmp.setSpritePath(Value => "yapas.png");
@@ -56,6 +66,7 @@ package body file is
                end if;
                Blk_tmp.setPosition((X => Float(j) * 64.0,
                                     Y => Float(i - j) / Float(Output.width) * 64.0));
+
                Output.Map.Include (i, Blk_tmp);
                i := i + 1;
             end loop;

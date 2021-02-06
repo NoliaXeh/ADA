@@ -68,7 +68,7 @@ procedure Main is
    Output:Maps.Map;
 
 begin
-   File.Read_File (Output => Output);
+   File.Read_File (Path => "src/map.txt", Output => Output);
    Maps.print(map =>Output);
    Game.Map := Output;
    --  Initialize GtkAda.

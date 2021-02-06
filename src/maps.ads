@@ -19,14 +19,18 @@ is
       width:Integer;
       map:hashMap.Map;
    end record;
+
    function Get(X : integer; Y : integer) return Block.Block
      with
        --Pre => X>=0 and X<Game.Map.width and Y>=0 and Y<Game.Map.height,
-       Post => Get'Result.Getname /= "";
+     Post => Get'Result.Getname /= "";
+
    procedure print(map: in Maps.Map)
      with
        Pre => map.height /= 0 and map.width /= 0;
+
    procedure fill_screen(map: in Maps.Map)
      with
        Pre => map.height /= 0 and map.width /= 0;
+
 end Maps;

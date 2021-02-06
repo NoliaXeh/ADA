@@ -39,12 +39,13 @@ is
    procedure Set_Visibility (Sp : in out Sprite; Visible: in Boolean) is
    begin
       Sp.Visible := Visible;
-      if Visible then
-         Sp.Panel.Move (Sp.Image, Gint(Sp.Position.X), Gint(Sp.Position.Y));
-      else
-         Sp.Panel.Move (Sp.Image, Gint(-0.0), Gint(-0.0));
+      if Sp.Image /= null then
+         if Visible then
+            Sp.Panel.Move (Sp.Image, Gint(Sp.Position.X), Gint(Sp.Position.Y));
+         else
+            Sp.Panel.Move (Sp.Image, Gint(-0.0), Gint(-0.0));
+         end if;
       end if;
-      
    end;
    
    
@@ -55,12 +56,14 @@ is
       
       if Sp.Visible then
          Sp.Position.X := Sp.Position.X + 100.0;
-         Ada.Float_Text_IO.Put(Sp.Position.X);
-         Ada.Text_IO.Put_Line("");
+         -- Ada.Float_Text_IO.Put(Sp.Position.X);
+         -- Ada.Text_IO.Put_Line("");
         
          --Sp.Panel.Move (Sp.Image, Gint(Sp.Position.X), Gint(Sp.Position.Y));
-         Sp.Panel.Move (Sp.Image, 10, 10);
-         Sp.Panel.Get_Parent.Show_Now;
+         if Sp.Panel /= null then
+            Sp.Panel.Move (Sp.Image, 10, 10);
+            Sp.Panel.Get_Parent.Show_Now;
+         end if;
       end if;
    end;
    

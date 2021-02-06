@@ -20,14 +20,14 @@ is
       ---
       Put_Line("--");
       Put("Pos:      ");
-      Put(Player.Position.X);
+      Put(Integer(Player.Position.X));
       Put(", ");
-      Put(Player.Position.Y);
+      Put(Integer(Player.Position.Y));
       Put_Line("");
       Put("Forces:   ");
-      Put(Player.Forces.X);
+      Put(Integer(Player.Forces.X)*1000);
       Put(", ");
-      Put(Player.Forces.Y);
+      Put(Integer(Player.Forces.Y));
       Put_Line("");
       Player.Mass := 100.0;
 
@@ -40,7 +40,15 @@ is
       --- [TBM] Update collision
       X := Integer(Player.Position.X) / 64;
       Y := Integer(Player.Position.Y) / 64;
-
+      Put("Player:    ");
+      Put(Integer(Player.Position.X));
+      Put(", ");
+      Put(Integer(Player.Position.Y));
+      Put(", ");
+      Put(Integer(Player.HitBox.Size.X));
+      Put(", ");
+      Put(Integer(Player.HitBox.Size.Y));
+      Put_Line("");
 
       if Y+1 >= Map.height or Y-1 < 0 then
          Player.Forces.Y := -Player.Forces.Y;
@@ -50,7 +58,17 @@ is
          -- Bottom Collision
          B := Maps.Get(X => X,
                     Y => Y + 1);
+         Put("B (bot):  ");
+         Put(Integer(B.getEntity.Position.X));
+         Put(", ");
+         Put(Integer(B.getEntity.Position.Y));
+         Put(", ");
+         Put(Integer(B.getEntity.HitBox.Size.Y));
+         Put(", ");
+         Put(Integer(B.getEntity.HitBox.Size.Y));
+         Put_Line("");
          if B.getNature /= 2 and then Entity.Collides(B.getEntity, Player) then
+            Put (B.getNature); Put_Line("");
             Entity.Apply_Force(Player, (0.0, -Player.Forces.Y));
             Player.Position.Y := B.getEntity.Position.Y - 62.0;
             Jump_Lock := False;
@@ -58,11 +76,16 @@ is
          -- Top
          B := Maps.Get(X => X,
                        Y => Y - 1);
+         Put("B (top):  ");
+         Put(Integer(B.getEntity.Position.X));
+         Put(", ");
+         Put(Integer(B.getEntity.Position.Y));
+         Put_Line("");
          Put (B.getNature); Put_Line("");
-         if B.getNature /= 2 and then Entity.Collides(B.getEntity, Player) then
+         if B.getNature /= 2 and then Entity.Collides(Player, B.getEntity) then
             Put ("Ouch");
             Player.Forces.Y := 2.0;
-            Player.Position.Y := B.getEntity.Position.Y + 62.0;
+            Player.Position.Y := B.getEntity.Position.Y + 66.0;
          end if;
       end if;
       if Up and not Jump_Lock then

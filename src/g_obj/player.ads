@@ -14,7 +14,6 @@ is
    function getMaxHp (Self : in Player) return Float;
    function getHp (Self : in Player) return Float;
    function getSpeed (Self : in Player) return Float;
-   function getAnimationSprite(Self : in Player; idx : Index) return Gtk_Fixed;
    
    -- setter
    procedure setMaxHp (Self : in out Player; Value : in Float)
@@ -22,9 +21,9 @@ is
    procedure setHp (Self : in out Player; Value : in Float)
      with Pre => Value >= 0.0 and Value <= Self.getMaxHp;
    procedure setSpeed (Self : in out Player; Value : in Float);
+   procedure setDisplayedSprite(Self: in Player; idx : Index);
    
 private
-   --type Index is range 1..6;
    type list is array (Index) of Gtk_Fixed;
       
    function load_sprite (path : String) return Gtk_Fixed;

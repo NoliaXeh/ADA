@@ -30,6 +30,14 @@ is
       Self.Speed := Value;
    end setSpeed;
    
+   
+   procedure setDisplayedSprite(Self: in Player; idx : Index) is
+   begin
+      for I in Index loop
+         Self.spriteList(I).Set_Visible(I = idx);
+      end loop;
+   end setDisplayedSprite;
+   
    -- private
    function load_sprite (path : String) return Gtk_Fixed is
       Buff : Gdk_Pixbuf;

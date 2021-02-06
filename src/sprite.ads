@@ -18,7 +18,9 @@ is
       Position: Vector.Vector;
    end record;
    
-   function Sprite_New (Path: String; Panel: Gtk_Fixed; Size_X : Gint; Size_Y: Gint) return Sprite;
+   function Sprite_New (Path: String; Panel: Gtk_Fixed; Size_X : Gint; Size_Y: Gint) return Sprite
+     with
+       Pre => Size_X > 0 and Size_Y > 0 and Panel /= null;
    
    procedure Set_Visibility (Sp : in out Sprite; Visible: in Boolean);
    

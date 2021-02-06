@@ -23,7 +23,7 @@ package body test_vector is
          Result : Float;
 
       begin
-         Put("test_size... ");
+         Put("  test_size... ");
          for Test_Pair of Test_Value loop
 
             Result := Vector.Size(Test_Pair.Input);
@@ -38,11 +38,9 @@ package body test_vector is
 
       end test_size;
 
-
    begin
       Put_Line("test_vector...");
       test_size;
-
       Put_Line("test_vector Done.");
 
    end run;

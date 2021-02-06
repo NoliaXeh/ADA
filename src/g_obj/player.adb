@@ -1,5 +1,10 @@
+with Gdk.Pixbuf; use Gdk.Pixbuf;
+with Glib.Error; use Glib.Error;
+with Gtk.Image; use Gtk.Image;
+with Glib; use Glib;
+
 package body Player 
-with SPARK_Mode => On
+with SPARK_Mode => Off
 is
 
    -- getter
@@ -24,5 +29,31 @@ is
    end setSpeed;
    
    -- private
+   function load_sprite (path : String) return Gtk_Fixed is
+      Buff : Gdk_Pixbuf;
+      err : GError;
+      Img : Gtk_Image;
+      fixed : Gtk_Fixed;
+   begin
+      -- Load image
+      Gdk_New_From_File(Pixbuf   => Buff,
+                        Filename => path,
+                        Error    => err);
+      -- resize
+      Buff := Scale_Simple(Src         => Buff,
+                          Dest_Width  => 64,
+                          Dest_Height => 128,
+                          Inter_Type  => Interp_Bilinear);
+      -- Create widget
+      Gtk_New(Img, Buff);
+      
+      -- Create widget
+      Gtk_New(Fixed);
+      
+      -- Put the new widget inside the Layer
+      Fixed.Put(Widget => Img, X => 0, Y => 0);
 
+      return Fixed;
+   end load_sprite;
+   
 end Player;

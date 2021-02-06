@@ -10,6 +10,7 @@ with game; use Game;
 with Glib;            use Glib;
 with Game; use Game;
 with Entity; use Entity;
+with Player;
 
 package body inputEvent
 with SPARK_Mode => Off -- GTK

@@ -33,7 +33,8 @@ is
       --end if;
       --if Key = Gdk_Space then
       elsif Key = Gdk_Space then
-         Apply_Force(Game.Player, (0.0, -100.0));
+         Game.Player.Position.Y := Game.Player.Position.Y - 0.2;
+         Apply_Force(Game.Player, (0.0, -640.0));
          null;
       end if;
       return True;

@@ -33,7 +33,7 @@ is
 
    Player      : Entity.Entity := (
                       HitBox => (Size => (X => 64.0, Y => 64.0)),      -- HitBox: Physics.HitBox;
-                      Position => (64.0, 64.0),                        -- Position: Vector.Vector;
+                      Position => (128.0, 256.0),                        -- Position: Vector.Vector;
                       Forces => (0.0, 0.0),                            -- Forces: Vector.Vector;
                       Mass => 100.0,                                     -- Mass: Float;
                                    Sp => --null                                       -- Sprite: Sprite.Sprite;

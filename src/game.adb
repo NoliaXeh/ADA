@@ -19,12 +19,12 @@ is
    begin
       ---
       Put_Line("--");
-      Put("Player Pos: ");
+      Put("Pos:      ");
       Put(Player.Position.X);
       Put(", ");
       Put(Player.Position.Y);
       Put_Line("");
-      Put("Player Forces: ");
+      Put("Forces:   ");
       Put(Player.Forces.X);
       Put(", ");
       Put(Player.Forces.Y);
@@ -38,33 +38,26 @@ is
       X := Integer(Player.Position.X) / 64;
       Y := Integer(Player.Position.Y) / 64;
 
-      if X < Map.width and X >= 0 and Y+1 < Map.height and Y >= 0 then
-         Put("Player Pos int: ");
-         Put(X);
-         Put(", ");
-         Put(Y);
-         Put_Line("");
 
+      if Y+1 >= Map.height or Y-1 < 0 then
+         Player.Forces.Y := -Player.Forces.Y;
+      elsif X+1 >= Map.width or X-1 < 0 then
+         Player.Forces.X := -Player.Forces.X;
+      else
+         -- Bottom Collision
          B := Maps.Get(X => X,
                     Y => Y + 1);
-
-         Put("B: ");
-         Put(Integer(B.getEntity.Position.X) / 64);
-         Put(", ");
-         Put(Integer(B.getEntity.Position.Y) / 64);
-         Put(", ");
-         Put_Line(B.getName);
-         Put("B.hitbox: ");
-         Put(Integer(B.getEntity.HitBox.Size.X) / 64);
-         Put(", ");
-         Put(Integer(B.getEntity.HitBox.Size.Y) / 64);
-         Put(", ");
-         Put_Line(B.getName);
-         if Entity.Collides(B.getEntity, Player) then
-            Player.Forces.Y := -Gravity*Delta_Time*Player.Mass;
+         if B.getNature /= 2 and then Entity.Collides(B.getEntity, Player) then
+            Entity.Apply_Force(Player, (0.0, -Player.Forces.Y));
+            Player.Position.Y := B.getEntity.Position.Y - 62.0;
          end if;
-      else
-         Player.Forces.Y := -Gravity*Delta_Time*Player.Mass;
+         -- Top
+         B := Maps.Get(X => X,
+                       Y => Y - 1);
+         if B.getNature /= 2 and then Entity.Collides(B.getEntity, Player) then
+            Player.Forces.Y := -2.0;
+            Player.Position.Y := B.getEntity.Position.Y + 62.0;
+         end if;
       end if;
       Entity.Update(Object => Player);
       --- Move all fixed to "follow" player

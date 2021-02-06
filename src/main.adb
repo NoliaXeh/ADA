@@ -132,7 +132,9 @@ begin
                                          Panel  => Fixed_Entities,
                                          Size_X => 64,
                                          Size_Y => 128);
-   --Game.Player.Sp.Panel.Move (Game.Player.Sp.Image, Game.Win_Width / 2 - 32, Game.Win_Height / 2 - 32);
+   Game.Player.Sp.Panel.Move (Game.Player.Sp.Image, Game.Win_Width / 2 - 32, Game.Win_Height / 2 - 64);
+   Game.Player.Position := (128.0, 128.0);
+   Game.Player.Forces := (1.0, 0.0);
    Win.Show_All;
    Win.Present;
    --EVENT

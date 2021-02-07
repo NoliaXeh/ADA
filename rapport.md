@@ -1,3 +1,4 @@
+
 # Rapport
 
 ## Introduction
@@ -22,10 +23,14 @@ Pour lancer les tests il suffit de lancer le projet sur le fichier "***tests/tes
 
 ## Architecture du projet
 
-- "***Blue/***", "***Green/***", "***Pink/***" dossier contenant les sprites pour les personnages et enemis
+- "***Blue/***", "***Green/***", "***Pink/***" dossier contenant les sprites pour les personnages et ennemis
 - "***tests/***" dossier contenant les tests sur le projet.
 - "***src/***" dossier contenant les fichiers sources du projet.
-    - ...
+    - "***src/g_obj***" dossier contenant les sources du package GameObject et ses dérivés
+	    - "***src/g_obj/block.ad****" package Block. Hérite de GameObject et contient les éléments liés aux blocks d'environnement (eau, sable, terre, ...)
+	    - "***src/g_obj/foe.ad****" package Foe. Identique à Player mais pour les ennemis avec une procédure pour l'IA.
+	    - "***src/g_obj/gameobject.ad****" package GameObject. Contient les éléments communs à tous les packages qui le dérivent (Block, Foe, Player).
+	    - "***src/g_obj/player.ad****" package Block. Hérite de GameObject et contient les éléments liés au joueur (points de vie, sprites d'animation, ...)
     - ...
 
 # DO178C

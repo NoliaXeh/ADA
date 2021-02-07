@@ -51,7 +51,11 @@ is
                   Blocks.Place_Block(Path  => "stone.png",
                               X     => Gint(j * 64),
                               Y     => Gint(i * 64),
-                                    Fixed => Game.Fixed_Mid);
+                                     Fixed => Game.Fixed_Mid);
+            elsif map.map.Element(i*map.width+j).getName = "Fusee" then
+               map.map.Element(i*map.width+j).placeBlock(Layer => Game.Fixed_Front,
+                                                         X     => 64,
+                                                         Y     => 128);
             end if;
          end loop;
       end loop;

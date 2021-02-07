@@ -59,6 +59,10 @@ package body file is
                   Blk_tmp.setSpritePath(Value => "yapas.png");
                   Blk_tmp.setName(Value => "Air");
                   Blk_tmp.setNature(Value => 2);
+               elsif Line(j) = 'F' then 
+                  Blk_tmp.setSpritePath(Value => "Fusee.png");
+                  Blk_tmp.setName(Value => "Fusee");
+                  Blk_tmp.setNature(Value => 4);
                else
                   Blk_tmp.setSpritePath(Value => "yapas.png");
                   Blk_tmp.setName(Value => "Air");

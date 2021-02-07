@@ -42,8 +42,8 @@ is
       Gtk_New(Img, Buff);
       -- Put the new widget inside the Layer
       Layer.Put(Widget => Img,
-                X      => Gint(Self.getEntity.Position.X),
-                Y      => Gint(Self.getEntity.Position.Y));
+                X      => Gint(Self.getEntity.Position.X-64.0),
+                Y      => Gint(Self.getEntity.Position.Y-64.0));
    end placeBlock;
 
    -- getter

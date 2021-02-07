@@ -15,26 +15,26 @@ is
    function Game return Boolean is
    begin
       ---
-      ePlayer.Mass := 100.0;
+      plum.getEntity.Mass := 100.0;
 
       if Right then
-         Entity.Apply_Force(ePlayer, (100.0, 0.0));
+         Entity.Apply_Force(plum.getEntity, (100.0, 0.0));
       end if;
       if Left then
-         Entity.Apply_Force(ePlayer, (-100.0, 0.0));
+         Entity.Apply_Force(plum.getEntity, (-100.0, 0.0));
       end if;
 
-      Entity.Process_Collision (ePlayer);
+      Entity.Process_Collision (plum.getEntity);
 
       if Up and not Jump_Lock then
-         Entity.Apply_Force(ePlayer, (0.0, -500.00));
+         Entity.Apply_Force(plum.getEntity, (0.0, -500.00));
          Jump_Lock := True;
       end if;
 
-      Entity.Update(Object => ePlayer);
+      Entity.Update(Object => plum.getEntity);
       Mechant.Update;
 
-      if Entity.Collides(ePlayer, Mechant.getEntity) then
+      if Entity.Collides(plum.getEntity, Mechant.getEntity) then
          Put_Line ("ça touche !!!");
          Put (count);
          count := count + 1;
@@ -43,8 +43,8 @@ is
       --- Move all fixed to "follow" player
 
       Layout.Move(Child_Widget => Fixed,
-                  X            => Gint(- ePlayer.Position.X + 64.0) + Win_Width / 2,
-                  Y            => Gint(- ePlayer.Position.Y) + Win_Height / 2);
+                  X            => Gint(- plum.getEntity.Position.X + 64.0) + Win_Width / 2,
+                  Y            => Gint(- plum.getEntity.Position.Y) + Win_Height / 2);
 
       ---
       return True;

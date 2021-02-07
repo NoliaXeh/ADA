@@ -42,20 +42,6 @@ is
    Gravity     : Float := 9.8;
 
    plum : Player.Player;
-   ePlayer      : Entity.Entity := (
-                      HitBox => (Size => (X => 65.0, Y => 75.0)),      -- HitBox: Physics.HitBox;
-                      Position => (128.0, 256.0),                        -- Position: Vector.Vector;
-                      Forces => (0.0, 0.0),                            -- Forces: Vector.Vector;
-                      Mass => 100.0,                                     -- Mass: Float;
-                                   Sp => --null                                       -- Sprite: Sprite.Sprite;
-                                     (
-                                      Panel    => null,
-                                      Test    => null,
-                                      Visible  => True,
-                                      Position => (64.0, 64.0)
-                                          )
-                                  );
-
    Mechant : Foe.Foe;
 
 end Game;

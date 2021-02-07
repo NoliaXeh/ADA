@@ -148,13 +148,13 @@ begin
    Game.Fixed_Pause := Fixed_Pause;
    Game.Start := False;
    Game.Layout := Layout;
-   Game.ePlayer.Sp := Sprite.Sprite_New ( Path   => "Pink/hitbox.png", --"Pink/alienPink_stand.png",
+   Game.plum.getEntity.Sp := Sprite.Sprite_New ( Path   => "Pink/hitbox.png", --"Pink/alienPink_stand.png",
                                          Panel  => Fixed_Entities,
                                          Size_X => 64,
                                          Size_Y => 128);
-   Game.ePlayer.Sp.Panel.Move (Game.ePlayer.Sp.Test, Game.Win_Width / 2, Game.Win_Height / 2 -64);
-   Game.ePlayer.Position := (128.0, 128.0);
-   Game.ePlayer.Forces := (1.0, 0.0);
+   Game.plum.getEntity.Sp.Panel.Move (Game.plum.getEntity.Sp.Test, Game.Win_Width / 2, Game.Win_Height / 2 -64);
+   Game.plum.getEntity.Position := (128.0, 128.0);
+   Game.plum.getEntity.Forces := (1.0, 0.0);
    Game.Delta_Time := 0.0;
 
    Game.Mechant.initSpriteList;

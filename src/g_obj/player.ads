@@ -40,20 +40,6 @@ private
       Speed : Float := 1.0;
       
       spriteList : list;
-      
-      RigidBody : Entity.Entity := ( -- Default parameters for player's Entity
-                                     HitBox => (Size => (X => 65.0, Y => 75.0)),
-                                     Position => (128.0, 256.0),
-                                     Forces => (0.0, 0.0),
-                                     Mass => 100.0,
-                                     Sp => -- Sprite.Sprite
-                                     (
-                                      Panel    => null,
-                                      Test    => null,
-                                      Visible  => True,
-                                      Position => (64.0, 64.0)
-                                     )
-                                    );
    end record;
 
 end Player;

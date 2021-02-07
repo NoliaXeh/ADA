@@ -45,41 +45,39 @@ is
       X: Integer;
       Y: Integer;
    begin
-      Self.RigidBody := Self.getEntity;
-      Self.RigidBody.Mass := 100.0;
-      X := Integer(Self.RigidBody.Position.X) / 64;
-      Y := Integer(Self.RigidBody.Position.Y) / 64;
+      X := Integer(Self.getEntity.Position.X) / 64;
+      Y := Integer(Self.getEntity.Position.Y) / 64;
       if Y+1 >= Game.Map.height or Y-1 < 0 then
-         Self.RigidBody.Forces.Y := -Self.RigidBody.Forces.Y;
+         Self.getEntity.Forces.Y := -Self.getEntity.Forces.Y;
          return;
       elsif X+1 >= Game.Map.width or X-1 < 0 then
-         Self.RigidBody.Forces.X := -Self.RigidBody.Forces.X;
+         Self.getEntity.Forces.X := -Self.getEntity.Forces.X;
          return;
       end if;
       -- Bottom Collision
       B := Maps.Get(X => X,
                  Y => Y + 1);
-      if B.getNature /= 2 and then Collides(B.getEntity, Self.RigidBody) then
-         Entity.Apply_Force(Self.RigidBody, (0.0, -Self.RigidBody.Forces.Y));
-         Self.RigidBody.Position.Y := B.getEntity.Position.Y - 62.0;
+      if B.getNature /= 2 and then Collides(B.getEntity, Self.getEntity) then
+         Entity.Apply_Force(Self.getEntity, (0.0, -Self.getEntity.Forces.Y));
+         Self.getEntity.Position.Y := B.getEntity.Position.Y - 62.0;
       end if;
       if Self.State = 0 then
          Self.State := 1;
       elsif Self.State = 1 then -- Right
-         Entity.Apply_Force(Self.RigidBody, Vector.Mul((800.0, 0.0), Game.Delta_Time));
+         Entity.Apply_Force(Self.getEntity, Vector.Mul((800.0, 0.0), Game.Delta_Time));
          B := Maps.Get(X => X,
                        Y => Y);
-         if B.getNature /= 2 and then Self.RigidBody.Position.X + Self.RigidBody.HitBox.Size.X >= (B.getEntity.Position.X) then
+         if B.getNature /= 2 and then Self.getEntity.Position.X + Self.getEntity.HitBox.Size.X >= (B.getEntity.Position.X) then
             Self.State := 2;
-            Self.RigidBody.Forces.X := 0.0;
+            Self.getEntity.Forces.X := 0.0;
          end if;
       else -- Self.State = 2 -- Left
-         Entity.Apply_Force(Self.RigidBody, Vector.Mul((-800.0, 0.0), Game.Delta_Time));
+         Entity.Apply_Force(Self.getEntity, Vector.Mul((-800.0, 0.0), Game.Delta_Time));
          B := Maps.Get(X => X - 1,
                        Y => Y);
-         if B.getNature /= 2 and then Self.RigidBody.Position.X <= (B.getEntity.Position.X + B.getEntity.HitBox.Size.X) then
+         if B.getNature /= 2 and then Self.getEntity.Position.X <= (B.getEntity.Position.X + B.getEntity.HitBox.Size.X) then
             Self.State := 1;
-            Self.RigidBody.Forces.X := 0.0;
+            Self.getEntity.Forces.X := 0.0;
          end if;
       end if;
       if (Anime.isAnimated) then
@@ -96,9 +94,8 @@ is
          end if;
       end if;
       --- TBR
-      Entity.Update (Self.RigidBody);
-      Self.setEntity(Self.RigidBody);
-      Game.Fixed.Move(Self.Panel, Gint(Self.RigidBody.Position.X - 64.0), Gint(Self.RigidBody.Position.Y - 64.0));
+      Entity.Update (Self.getEntity);
+      Game.Fixed.Move(Self.Panel, Gint(Self.getEntity.Position.X - 64.0), Gint(Self.getEntity.Position.Y - 64.0));
    end Update;
 
    -- getter

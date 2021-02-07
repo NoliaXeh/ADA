@@ -44,13 +44,13 @@ private
                                      HitBox => (Size => (X => 64.0, Y => 64.0)),
                                      Position => (0.0, 0.0),
                                      Forces => (0.0, 0.0),
-                                     Mass => 0.0,
+                                     Mass => 100.0,
                                      Sp => -- Sprite.Sprite
                                      (
                                       Panel    => null,
                                       Test    => null,
                                       Visible  => True,
-                                      Position => (64.0, 64.0)
+                                      Position => (32.0, 32.0)
                                      )
                                     );
    end record;

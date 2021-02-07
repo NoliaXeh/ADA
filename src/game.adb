@@ -15,8 +15,6 @@ is
    function Game return Boolean is
    begin
       ---
-      plum.getEntity.Mass := 100.0;
-
       if Right then
          Entity.Apply_Force(plum.getEntity, (100.0, 0.0));
       end if;
@@ -41,7 +39,6 @@ is
       end if;
 
       --- Move all fixed to "follow" player
-
       Layout.Move(Child_Widget => Fixed,
                   X            => Gint(- plum.getEntity.Position.X + 64.0) + Win_Width / 2,
                   Y            => Gint(- plum.getEntity.Position.Y) + Win_Height / 2);

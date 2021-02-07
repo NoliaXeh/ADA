@@ -39,6 +39,20 @@ is
       Game.Fixed.Put(Self.panel, 0, 0);
    end initSpriteList;
    
+   function Foe_New (Position: Vector.Vector) return Foe is
+      F : Foe;
+   begin
+      F.setPosition(Position => Position);
+      F.initSpriteList;
+      return F;
+   end;
+   
+   function "=" (F: Foe; G: Foe) return Boolean is
+   begin
+      return False;
+   end;
+   
+
    
    procedure Update (Self: in out Foe) is
       B: Block.Block;

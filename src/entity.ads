@@ -29,4 +29,8 @@ is
    -- Update the Entity by
    --   - Applying the Forces to update the Entity position
    --   - Does not update sprite position
+
+   procedure Process_Collision (Player: in out Entity);
+   -- Processes all colisions and updates entity position according to them
+
 end Entity;

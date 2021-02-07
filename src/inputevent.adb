@@ -42,6 +42,7 @@ is
          null;
       elsif Key = GDK_Escape then
          if Game.isWin then
+            Game.isWin := False;
             win.close;
          end if;
          if Game.Delta_Time = 0.0 then
@@ -58,6 +59,11 @@ is
          Game.Up := True;
          --Game.Player.Position.Y := Game.Player.Position.Y - 0.2;
          --Apply_Force(Game.Player, (0.0, -640.0));
+         null;
+      elsif Key = GDK_Return then
+         if Game.isWin then
+            win.close;
+         end if;
          null;
       end if;
       return True;

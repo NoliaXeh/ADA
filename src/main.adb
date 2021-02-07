@@ -132,8 +132,10 @@ begin
    Graphics.set_image (panel => Fixed_Start, image    => "background.png");
    Graphics.set_image (panel => Fixed_Start, image    => "Start.png");
    Graphics.set_image (panel => Fixed_Pause, image    => "Pause.png");
-   Graphics.set_image (panel => Fixed_Loose, image    => "Pause.png");
-   Graphics.set_image (panel => Fixed_Win, image    => "Pause.png");
+   Graphics.set_image (panel => Fixed_Loose, image    => "background.png");
+   Graphics.set_image (panel => Fixed_Loose, image    => "Loose.png");
+   Graphics.set_image (panel => Fixed_Win, image    => "background.png");
+   Graphics.set_image (panel => Fixed_Win, image    => "Win.png");
    Layout.Put(Child_Widget => Fixed_Start,
               X            => 0,
               Y            => 0);

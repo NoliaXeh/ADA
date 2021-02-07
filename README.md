@@ -1,75 +1,82 @@
+
 # ADA Projet
 
-## Nom: A voir
+## Nom: ADAPlum
 
 [TOC]
-
-
 
 ## Principe
 
 - Plateformer
-- Controles avec ZQSD(move) SPACE(saut) SHIFT(parade)
-- attaque avec JKLM
-- Choix d'arme à la toolbar minecraft
-- 4 ennemis et 1 boss
-  - 2 ennemi CaC
-  - 2 ennemi Dist
-  - 1 ennemis par élèments
-- type d'environnement
-  - sol
-  - eau
-  - air (vol)
+- Controles 
+	- Flèches => Déplacements
+	- Espace => Sauter
+	- Echap => Pause
+	- ~~Maj => Parade~~
+- ~~attaque avec JKLM~~
+- ~~Choix d'arme à la toolbar minecraft~~
+- ~~4 ennemis et 1 boss~~ 1 ennemi
+  - ~~2 ennemi CaC~~ 1 ennemi CaC (Corps à Corps)
+  - ~~2 ennemi Dist~~
+  - ~~1 ennemis par élèments~~
+- Types d'environnement
+  - Terre
+  - Herbe
+  - Eau
+  - Air
+  - Pierre
+  - Sable
 - Triggers:
-  - Fin de niveau
-  - Heal ?
+  - Echec (mort)
+  - Succès (Atteindre la fusée)
+  - ~~Heal ?~~
 - Menus:
-  - Début (commencer, quitter)
+  - ~~Début (commencer, quitter)~~
   - Game Over (recommencer, quitter)
 
 ## Tâches
 
 
-###  1. Link de GTKADA (c'était bien de la merde, mais c'est fait)
+###  1. Link de GTKADA
 
-### 2. Game Engine (Leo)
+### 2. Game Engine
 
 - Game Object 
 - Player
 - Ennemis
 - Blocks
 
-### 3. Engine physique (Thibault)
+### 3. Engine physique
 
 - Vitesse
 - Sauter
 - Glisser
 - Collision
 - Gravité
-- Nager
+- ~~Nager~~
 
-### 4. Engine graphique (Lionel, Damien)
+### 4. Engine graphique
 
 - Affichage blocks
-- Affichage perso (animation à faire plus tard)
-- Affichage sur 3 plans (arrière plan, plan, premier plan) + fond
+- Affichage personnage (animation ~~à faire plus tard~~)
+- Affichage sur plusieurs plans
+	- Arrière plan
+	- Plan intermédiaire
+	- Premier plan
+	- Plan des unités mobiles
 - Centrer sur le personnage
-- Lumières (LoL)
-- RTX (c'est Léo qui fait)
 
-### 5. Engine gameplay (Lionel, Leo)
+### 5. Engine gameplay
 
 - Events
-- Touches / Souris
-- Menu (pause)
-- Gestion de la vitesse de jeu
-- Son
-- Interactions
-- Ecran de chargement
+	- Touches ~~/ Souris~~
+	- Menu (pause)
+- ~~Gestion de la vitesse de jeu~~
+- ~~Son~~
+- Interactions (dégâts)
+- ~~Ecran de chargement~~
 
-### 6. Level design (Thibault, Leo, Damien)
+### 6. Level design
 
-- Au moins 1 niveau + 1 niveau BOSS (Leo)
-- Sauvegarde des niveaux (Thibault)
-
-
+- Au moins 1 niveau ~~+ 1 niveau BOSS~~
+- ~~Sauvegarde des niveaux~~

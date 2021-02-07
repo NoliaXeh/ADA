@@ -1,7 +1,9 @@
 with Gtk.Fixed; use Gtk.Fixed;
-
+with Ada.Containers; use Ada.Containers;
+with Ada.Containers.Vectors;
 with GameObject;
 with Entity;
+with Vector; use Vector;
 
 package Foe
 with SPARK_Mode => Off
@@ -10,6 +12,10 @@ is
    type Foe is new GameObject.GameObject with private;
    
    type Index is range 1..6;
+   
+   function Foe_New (Position: Vector.Vector) return Foe;
+   
+   function "=" (F: Foe; G: Foe) return Boolean;
    
    procedure initSpriteList(Self : in out Foe);
    

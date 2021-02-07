@@ -8,11 +8,13 @@ with Entity;          use Entity;
 with Sprite;          use Sprite;
 with Maps;            use Maps;
 with Block;           use Block;
-
+with Gtk.Label; use Gtk.Label;
+with Foe;
 package body Game
 with SPARK_Mode => Off
 is
    function Game return Boolean is
+      F: Foe.Foe;
    begin
       ---
       if Right then
@@ -30,13 +32,18 @@ is
       end if;
 
       Entity.Update(Object => plum.getEntity);
-      Mechant.Update;
 
-      if Entity.Collides(plum.getEntity, Mechant.getEntity) then
-         Put (Integer(plum.getHp));
-         Put_line("");
-         plum.setHp(plum.getHp - 1.0);
+      for F of Foe_List loop
+         F.Update;
+         if Entity.Collides(plum.getEntity, F.getEntity) then
+            plum.setHp(plum.getHp - 1.0);
       end if;
+      end loop;
+      Set_Text (Life, "Life :" & Integer'Image(Integer(plum.getHp)) & " /" & Integer'Image(Integer(plum.getMaxHp)));
+
+      --Mechant.Update;
+
+
 
       --- Move all fixed to "follow" player
       Layout.Move(Child_Widget => Fixed,

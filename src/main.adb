@@ -53,6 +53,7 @@ procedure Main is
    Fixed_Loose   : Gtk_Fixed;
    osef          : G_Source_Id;
    osefIsBack          : G_Source_Id;
+   Life          : Gtk_Label;
 
    function Delete_Event_Cb
      (Self  : access Gtk_Widget_Record'Class;
@@ -78,7 +79,7 @@ procedure Main is
 begin
    <<Beginning>>
    File.Read_File (Path => "src/map.txt", Output => Output);
-   Maps.print(map =>Output);
+
    Game.Map := Output;
    --  Initialize GtkAda.
    Gtk.Main.Init;
@@ -106,10 +107,13 @@ begin
    Gtk_New (Fixed_Pause);
    Gtk_New (Fixed_Loose);
    Gtk_New (Fixed_Win);
+   Gtk_New (Life);
 
+   Set_Text (Life, "XXX");
 
    Fixed.Put (Fixed_Mid, 0, 0);
    Layout.Put (Fixed_Entities, 0, 0);
+   Layout.Put (Life, 0, 0);
    Fixed.Put (Fixed_Front, 0, 0);
 
 
@@ -167,12 +171,20 @@ begin
                                          Size_X => 64,
                                          Size_Y => 128);
    Game.plum.getEntity.Sp.Panel.Move (Game.plum.getEntity.Sp.Test, Game.Win_Width / 2, Game.Win_Height / 2 -64);
-   Game.plum.getEntity.Position := (128.0, 128.0);
+   Game.plum.getEntity.Position := (128.0, 512.0);
    Game.plum.getEntity.Forces := (1.0, 0.0);
    Game.Delta_Time := 0.0;
 
+   Game.Life := Life;
+
    Game.Mechant.initSpriteList;
    Game.Mechant.setPosition((20.0 * 64.0, 128.0));
+
+   for I in 1 .. 8 loop
+      Game.Foe_List.Append (Foe_New ((128.0 + 800.0 * Float(I), 256.0)));
+   end loop;
+
+
 
 
    Win.Show_All;
@@ -199,8 +211,7 @@ begin
       --  Show the window and present it
    Gtk.Main.Main;
    if Game.isWin then
-      Put_Line ("ici");
-      win.Destroy;
+      Win.Destroy;
       Game.isWin := False;
       Game.plum.setHp(Game.plum.getMaxHp);
       goto Beginning;

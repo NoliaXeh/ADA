@@ -79,8 +79,7 @@ is
          B := Maps.Get(X => Integer(Player.Position.X - 32.0) / 64,
                        Y => Y + 1);
          if B.getNature = 4 then 
-            Put_Line("ez win");
-            --Gtk.Window.Close(Game.Win);
+            Game.isWin := True;
          end if;
          if B.getNature /= 2 and then Collides(B.getEntity, Player) then
             Apply_Force(Player, (0.0, -Player.Forces.Y));

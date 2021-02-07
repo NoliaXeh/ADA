@@ -34,6 +34,7 @@ is
    Fixed_Entities : Gtk_Fixed;
    Win           : Gtk_Window;
    Map         : Maps.Map;
+   isWin : Boolean := False;
    Right : Boolean := False;
    Left : Boolean := False;
    Up : Boolean := False;

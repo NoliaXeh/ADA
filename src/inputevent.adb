@@ -27,6 +27,7 @@ is
          return True;
       end if;
 
+
       Key := Event.Keyval;
       if Key = Gdk_Down then
          null;
@@ -40,6 +41,9 @@ is
          Game.Right := True;
          null;
       elsif Key = GDK_Escape then
+         if Game.isWin then
+            win.close;
+         end if;
          if Game.Delta_Time = 0.0 then
             Game.Fixed_Pause.Set_Visible(False);
             Game.Delta_Time := 1.0 / 60.0;

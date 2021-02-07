@@ -49,6 +49,8 @@ procedure Main is
    Fixed_Front   : Gtk_Fixed;
    Fixed_Start   : Gtk_Fixed;
    Fixed_Pause   : Gtk_Fixed;
+   Fixed_Win     : Gtk_Fixed;
+   Fixed_Loose   : Gtk_Fixed;
    osef          : G_Source_Id;
    osefIsBack          : G_Source_Id;
 
@@ -74,6 +76,7 @@ procedure Main is
    Output:Maps.Map;
 
 begin
+   <<Beginning>>
    File.Read_File (Path => "src/map.txt", Output => Output);
    Maps.print(map =>Output);
    Game.Map := Output;
@@ -101,6 +104,8 @@ begin
    Gtk_New (Fixed_Front);
    Gtk_New (Fixed_Start);
    Gtk_New (Fixed_Pause);
+   Gtk_New (Fixed_Loose);
+   Gtk_New (Fixed_Win);
 
 
    Fixed.Put (Fixed_Mid, 0, 0);
@@ -127,12 +132,16 @@ begin
    Graphics.set_image (panel => Fixed_Start, image    => "background.png");
    Graphics.set_image (panel => Fixed_Start, image    => "Start.png");
    Graphics.set_image (panel => Fixed_Pause, image    => "Pause.png");
+   Graphics.set_image (panel => Fixed_Loose, image    => "Pause.png");
+   Graphics.set_image (panel => Fixed_Win, image    => "Pause.png");
    Layout.Put(Child_Widget => Fixed_Start,
               X            => 0,
               Y            => 0);
    Layout.Put(Child_Widget => Fixed_Pause,
               X            => 0,
               Y            => 0);
+   Layout.Put (Fixed_Win, 0, 0);
+   Layout.Put (Fixed_Loose, 0, 0);
 
    -- Stop the Gtk process when closing the window
    Win.On_Delete_Event (Delete_Event_Cb'Unrestricted_Access);
@@ -146,8 +155,11 @@ begin
    Game.Fixed_Entities := Fixed_Entities;
    Game.Fixed_Start := Fixed_Start;
    Game.Fixed_Pause := Fixed_Pause;
+   Game.Fixed_Win := Fixed_Win;
+   Game.Fixed_Loose := Fixed_Loose;
    Game.Start := False;
    Game.Layout := Layout;
+   Game.win := win;
    Game.plum.getEntity.Sp := Sprite.Sprite_New ( Path   => "Pink/hitbox.png", --"Pink/alienPink_stand.png",
                                          Panel  => Fixed_Entities,
                                          Size_X => 64,
@@ -164,6 +176,8 @@ begin
    Win.Show_All;
    Win.Present;
    Fixed_Pause.Set_Visible(False);
+   Fixed_Loose.Set_Visible(False);
+   Fixed_Win.Set_Visible(False);
    Game.plum.setDisplayedSprite(1);
    --EVENT
    win.On_Key_Press_Event(Process_Key_Press'Unrestricted_Access);
@@ -181,6 +195,13 @@ begin
                                  Func     => Anime.Anime'Access);
    --  Start the Gtk+ main loop
       --  Show the window and present it
-
    Gtk.Main.Main;
+   if Game.isWin then
+      Put_Line ("ici");
+      win.Destroy;
+      Game.isWin := False;
+      Game.plum.setHp(Game.plum.getMaxHp);
+      goto Beginning;
+   end if;
+
 end Main;

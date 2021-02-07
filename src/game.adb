@@ -44,7 +44,13 @@ is
                   Y            => Gint(- plum.getEntity.Position.Y) + Win_Height / 2);
 
       ---
+      if isWin then
+         Fixed_Win.Set_Visible(True);
+         return False;
+      end if;
       if plum.getHp = 0.0 then
+         Fixed_Loose.Set_Visible(True);
+         isWin := True;
          return False;
       end if;
       return True;

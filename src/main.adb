@@ -156,7 +156,7 @@ begin
    Game.Delta_Time := 0.0;
 
    Game.Mechant.initSpriteList;
-   Game.Mechant.setPosition((256.0 - 70.0, 128.0));
+   Game.Mechant.setPosition((20.0 * 64.0, 128.0));
 
    Win.Show_All;
    Win.Present;

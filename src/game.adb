@@ -34,6 +34,12 @@ is
       Entity.Update(Object => Player);
       Mechant.Update;
 
+      if Entity.Collides(Player, Mechant.getEntity) then
+         Put_Line ("ça touche !!!");
+         Put (count);
+         count := count + 1;
+      end if;
+
       --- Move all fixed to "follow" player
 
       Layout.Move(Child_Widget => Fixed,

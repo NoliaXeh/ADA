@@ -34,9 +34,6 @@ is
    begin
       Tmp_Entity := Self.getEntity;
       Tmp_Entity.Mass := 100.0;
-      Vector.Put_Line ( Tmp_Entity.Position );
-      Put (Integer(Tmp_Entity.Mass));
-      Put_Line("");
       X := Integer(Tmp_Entity.Position.X) / 64;
       Y := Integer(Tmp_Entity.Position.Y) / 64;
       if Y+1 >= Game.Map.height or Y-1 < 0 then
@@ -73,7 +70,6 @@ is
          end if;
       end if;
       --- TBR
-      Vector.Put_Line ( Tmp_Entity.Forces );
       Entity.Update (Tmp_Entity);
       Self.setEntity(Tmp_Entity);
       Game.Fixed.Move(Self.spriteList(1), Gint(Tmp_Entity.Position.X - 64.0), Gint(Tmp_Entity.Position.Y - 64.0));

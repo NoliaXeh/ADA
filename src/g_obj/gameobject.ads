@@ -44,8 +44,8 @@ private
                                      Mass => 0.0,
                                      Sp => -- Sprite.Sprite
                                      (
-                                      Image    => null,
                                       Panel    => null,
+                                      Test    => null,
                                       Visible  => True,
                                       Position => (64.0, 64.0)
                                      )

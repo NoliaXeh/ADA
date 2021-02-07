@@ -54,8 +54,8 @@ package body file is
                   Blk_tmp.setName(Value => "Grass");
                   Blk_tmp.setNature(Value => 0);
                elsif Line(j) = 'P' then 
-                  Game.Player.Position.X := Float(j);
-                  Game.Player.Position.Y := Float(i - j) / Float(Output.width);
+                  Game.ePlayer.Position.X := Float(j);
+                  Game.ePlayer.Position.Y := Float(i - j) / Float(Output.width);
                   Blk_tmp.setSpritePath(Value => "yapas.png");
                   Blk_tmp.setName(Value => "Air");
                   Blk_tmp.setNature(Value => 2);

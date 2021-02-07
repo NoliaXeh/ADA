@@ -11,6 +11,7 @@ is
    type Index is range 1..6;
    
    procedure initSpriteList(Self : in out Player);
+   procedure fixSprite(Self : in out Player; Panel : Gtk_Fixed);
    
    -- getter
    function getMaxHp (Self : in Player) return Float;

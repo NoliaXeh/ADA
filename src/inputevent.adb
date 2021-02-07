@@ -67,9 +67,11 @@ is
       Key := Event.Keyval;
       if Key = Gdk_Left then
          Game.Left := False;
+         Game.plum.setDisplayedSprite(2);
          null;
       elsif Key = Gdk_Right then
          Game.Right := False;
+         Game.plum.setDisplayedSprite(1);
          null;
       elsif Key = Gdk_Space or Key = Gdk_Up then
          Game.Up := False;

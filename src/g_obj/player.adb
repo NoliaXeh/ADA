@@ -15,6 +15,15 @@ is
                           load_sprite("Pink/alienPink_walk3.png"),
                           load_sprite("Pink/alienPink_walk4.png"));
    end initSpriteList;
+   procedure fixSprite(Self : in out Player; Panel : Gtk_Fixed) is
+   begin 
+      Panel.Put(Self.spriteList(1),0,0);
+      Panel.Put(Self.spriteList(2),0,0);
+      Panel.Put(Self.spriteList(3),0,0);
+      Panel.Put(Self.spriteList(4),0,0);
+      Panel.Put(Self.spriteList(5),0,0);
+      Panel.Put(Self.spriteList(6),0,0);
+   end fixSprite;
 
    -- getter
    function getMaxHp (Self : in Player) return Float is (Self.MaxHp);

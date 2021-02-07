@@ -15,26 +15,26 @@ is
    function Game return Boolean is
    begin
       ---
-      Player.Mass := 100.0;
+      ePlayer.Mass := 100.0;
 
       if Right then
-         Entity.Apply_Force(Player, (100.0, 0.0));
+         Entity.Apply_Force(ePlayer, (100.0, 0.0));
       end if;
       if Left then
-         Entity.Apply_Force(Player, (-100.0, 0.0));
+         Entity.Apply_Force(ePlayer, (-100.0, 0.0));
       end if;
 
-      Entity.Process_Collision (Player);
+      Entity.Process_Collision (ePlayer);
 
       if Up and not Jump_Lock then
-         Entity.Apply_Force(Player, (0.0, -500.00));
+         Entity.Apply_Force(ePlayer, (0.0, -500.00));
          Jump_Lock := True;
       end if;
 
-      Entity.Update(Object => Player);
+      Entity.Update(Object => ePlayer);
       Mechant.Update;
 
-      if Entity.Collides(Player, Mechant.getEntity) then
+      if Entity.Collides(ePlayer, Mechant.getEntity) then
          Put_Line ("ça touche !!!");
          Put (count);
          count := count + 1;
@@ -43,8 +43,8 @@ is
       --- Move all fixed to "follow" player
 
       Layout.Move(Child_Widget => Fixed,
-                  X            => Gint(- Player.Position.X + 64.0) + Win_Width / 2,
-                  Y            => Gint(- Player.Position.Y) + Win_Height / 2);
+                  X            => Gint(- ePlayer.Position.X + 64.0) + Win_Width / 2,
+                  Y            => Gint(- ePlayer.Position.Y) + Win_Height / 2);
 
       ---
       return True;

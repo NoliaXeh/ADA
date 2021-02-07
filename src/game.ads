@@ -8,6 +8,7 @@ with Gtk.Window;      use Gtk.Window;
 with Glib;            use Glib;
 with Maps; use Maps;
 with Foe; use Foe;
+with Player; use Player;
 
 package Game
 with SPARK_Mode => Off
@@ -40,15 +41,16 @@ is
    Delta_Time  : Float := 1.0 / 60.0; -- 60 FPS
    Gravity     : Float := 9.8;
 
-   Player      : Entity.Entity := (
+   plum : Player.Player;
+   ePlayer      : Entity.Entity := (
                       HitBox => (Size => (X => 65.0, Y => 75.0)),      -- HitBox: Physics.HitBox;
                       Position => (128.0, 256.0),                        -- Position: Vector.Vector;
                       Forces => (0.0, 0.0),                            -- Forces: Vector.Vector;
                       Mass => 100.0,                                     -- Mass: Float;
                                    Sp => --null                                       -- Sprite: Sprite.Sprite;
                                      (
-                                      Image    => null,
                                       Panel    => null,
+                                      Test    => null,
                                       Visible  => True,
                                       Position => (64.0, 64.0)
                                           )

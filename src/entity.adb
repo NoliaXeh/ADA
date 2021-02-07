@@ -50,11 +50,11 @@ is
    begin
       Apply_Force(Object, (0.0, Object.Mass * Game.Gravity * Game.Delta_Time));
       Apply_Force(Object, (-Object.Forces.X * 0.1, 0.0 * Game.Delta_Time));
-      if Player.Forces.X * Player.Forces.X < 0.01 then
-         Player.Forces.X := 0.0;
+      if ePlayer.Forces.X * ePlayer.Forces.X < 0.01 then
+         ePlayer.Forces.X := 0.0;
       end if;
-      if Player.Forces.Y * Player.Forces.Y < 0.01 then
-         Player.Forces.Y := 0.0;
+      if ePlayer.Forces.Y * ePlayer.Forces.Y < 0.01 then
+         ePlayer.Forces.Y := 0.0;
       end if;
       Object.Position := Vector.Add(Object.Position, Vector.Mul(Object.Forces, Game.Delta_Time));
    end;

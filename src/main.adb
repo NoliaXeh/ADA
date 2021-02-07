@@ -14,6 +14,7 @@ with Glib;            use Glib;
 with Glib.Main;       use Glib.Main;
 with Glib.Object; use Glib.Object;
 with Ada.Text_IO; use Ada.Text_IO;
+with Anime; use Anime;
 
 with Block; use Block;
 with Game; use Game;
@@ -49,6 +50,7 @@ procedure Main is
    Fixed_Start   : Gtk_Fixed;
    Fixed_Pause   : Gtk_Fixed;
    osef          : G_Source_Id;
+   osefIsBack          : G_Source_Id;
 
    function Delete_Event_Cb
      (Self  : access Gtk_Widget_Record'Class;
@@ -146,17 +148,18 @@ begin
    Game.Fixed_Pause := Fixed_Pause;
    Game.Start := False;
    Game.Layout := Layout;
-   Game.Player.Sp := Sprite.Sprite_New ( Path   => "Pink/hitbox.png", --"Pink/alienPink_stand.png",
+   Game.ePlayer.Sp := Sprite.Sprite_New ( Path   => "Pink/hitbox.png", --"Pink/alienPink_stand.png",
                                          Panel  => Fixed_Entities,
                                          Size_X => 64,
                                          Size_Y => 128);
-   Game.Player.Sp.Panel.Move (Game.Player.Sp.Image, Game.Win_Width / 2, Game.Win_Height / 2 -64);
-   Game.Player.Position := (128.0, 128.0);
-   Game.Player.Forces := (1.0, 0.0);
+   Game.ePlayer.Sp.Panel.Move (Game.ePlayer.Sp.Test, Game.Win_Width / 2, Game.Win_Height / 2 -64);
+   Game.ePlayer.Position := (128.0, 128.0);
+   Game.ePlayer.Forces := (1.0, 0.0);
    Game.Delta_Time := 0.0;
 
    Game.Mechant.initSpriteList;
    Game.Mechant.setPosition((20.0 * 64.0, 128.0));
+
 
    Win.Show_All;
    Win.Present;
@@ -173,7 +176,8 @@ begin
    osef := Glib.Main.Timeout_Add(Interval => 16, -- ms
                                  Func     => Game.Game'Access);
    ---
-
+   osefIsBack := Glib.Main.Timeout_Add(Interval => 128, -- ms
+                                 Func     => Anime.Anime'Access);
    --  Start the Gtk+ main loop
       --  Show the window and present it
 

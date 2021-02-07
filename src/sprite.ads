@@ -12,8 +12,8 @@ with SPARK_Mode => Off --GTK
 is
 
    type Sprite is record
-      Image   : Gtk_Image;
       Panel   : Gtk_Fixed;
+      Test : Gtk_Fixed;
       Visible : Boolean;
       Position: Vector.Vector;
    end record;

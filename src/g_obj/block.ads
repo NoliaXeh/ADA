@@ -13,6 +13,8 @@ is
    
    -- Put the block inside the Layer
    procedure placeBlock (Self : in Block; Layer : in out Gtk_Fixed);
+   procedure placeBlock (Self : in Block; Layer : in out Gtk_Fixed;
+                         X : in Integer; Y : in Integer);
    
    -- getter
    function getNature(Self : in Block) return Integer;

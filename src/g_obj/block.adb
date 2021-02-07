@@ -22,6 +22,29 @@ is
                 X      => Gint(Self.getEntity.Position.X),
                 Y      => Gint(Self.getEntity.Position.Y));
    end placeBlock;
+   
+   procedure placeBlock (Self : in Block; Layer : in out Gtk_Fixed;
+                         X : in Integer; Y : in Integer) is
+      Buff : Gdk_Pixbuf;
+      Img : Gtk_Image;
+      err : GError;
+   begin
+      -- Load image
+      Gdk_New_From_File(Pixbuf   => Buff,
+                        Filename => Self.getSpritePath,
+                        Error    => err);
+      -- resize
+      Buff := Scale_Simple(Src         => Buff,
+                          Dest_Width  => Gint(X),
+                          Dest_Height => Gint(Y),
+                          Inter_Type  => Interp_Bilinear);
+      -- Create widget
+      Gtk_New(Img, Buff);
+      -- Put the new widget inside the Layer
+      Layer.Put(Widget => Img,
+                X      => Gint(Self.getEntity.Position.X),
+                Y      => Gint(Self.getEntity.Position.Y));
+   end placeBlock;
 
    -- getter
    function getNature (Self : in Block) return Integer is (Self.Nature);

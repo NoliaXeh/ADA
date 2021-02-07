@@ -4,7 +4,8 @@ with Vector;          use Vector;
 with Game;            use Game;
 with Block;           use Block;
 with Maps;           use Maps;
-
+--with Gtk.Window;           use Gtk.Window;
+with Ada.Text_IO; use Ada.Text_IO;
 package body Entity
 with SPARK_Mode => Off
 is
@@ -76,7 +77,11 @@ is
       else
          -- Bottom Collision
          B := Maps.Get(X => Integer(Player.Position.X - 32.0) / 64,
-                    Y => Y + 1);
+                       Y => Y + 1);
+         if B.getNature = 4 then 
+            Put_Line("ez win");
+            --Gtk.Window.Close(Game.Win);
+         end if;
          if B.getNature /= 2 and then Collides(B.getEntity, Player) then
             Apply_Force(Player, (0.0, -Player.Forces.Y));
             Player.Position.Y := B.getEntity.Position.Y - 62.0;

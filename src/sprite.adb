@@ -33,7 +33,7 @@ is
       
       Game.plum.initSpriteList;
       Game.plum.fixSprite(Panel => test);
-      Game.plum.setDisplayedSprite(1);
+      
       Panel.Put(test,64,64);
       
       Ret.test := test;

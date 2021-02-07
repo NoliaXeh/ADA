@@ -26,6 +26,8 @@ is
    Fixed       : Gtk_Fixed;
    Fixed_Start : Gtk_Fixed;
    Fixed_Pause : Gtk_Fixed;
+   Fixed_Win : Gtk_Fixed;
+   Fixed_Loose : Gtk_Fixed;
    Fixed_Mid   : Gtk_Fixed;
    Fixed_Back  : Gtk_Fixed;
    Fixed_Front : Gtk_Fixed;

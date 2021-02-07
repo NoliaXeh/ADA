@@ -35,9 +35,9 @@ is
       Mechant.Update;
 
       if Entity.Collides(plum.getEntity, Mechant.getEntity) then
-         Put_Line ("ça touche !!!");
-         Put (count);
-         count := count + 1;
+         Put (Integer(plum.getHp));
+         Put_line("");
+         plum.setHp(plum.getHp - 1.0);
       end if;
 
       --- Move all fixed to "follow" player
@@ -47,6 +47,9 @@ is
                   Y            => Gint(- plum.getEntity.Position.Y) + Win_Height / 2);
 
       ---
+      if plum.getHp = 0.0 then
+         return False;
+      end if;
       return True;
    end;
 end Game;

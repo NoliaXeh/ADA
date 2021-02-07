@@ -3,6 +3,7 @@ with Glib.Error; use Glib.Error;
 with Gtk.Image; use Gtk.Image;
 with Glib; use Glib;
 with Block; use Block;
+with Anime; use Anime;
 
 with Game; use Game;
 with Entity; use Entity;
@@ -15,16 +16,29 @@ with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 package body Foe 
 with SPARK_Mode => Off
 is
+   
    procedure initSpriteList(Self : in out Foe) is
+      procedure fixSprite(Panel : Gtk_Fixed) is
+      begin 
+         Panel.Put(Self.spriteList(1),0,0);
+         Panel.Put(Self.spriteList(2),0,0);
+         Panel.Put(Self.spriteList(3),0,0);
+         Panel.Put(Self.spriteList(4),0,0);
+         Panel.Put(Self.spriteList(5),0,0);
+         Panel.Put(Self.spriteList(6),0,0);
+      end fixSprite;
    begin
+      Gtk_new(Self.panel);
       Self.spriteList := (load_sprite("Blue/alienBlue_stand.png"),
-                          load_sprite("Blue/alienBlue_stand.png"),
+                          load_sprite("Blue/alienBlue_stand2.png"),
                           load_sprite("Blue/alienBlue_walk1.png"),
                           load_sprite("Blue/alienBlue_walk2.png"),
-                          load_sprite("Blue/alienBlue_walk1.png"),
-                          load_sprite("Blue/alienBlue_walk2.png"));
-      Game.Fixed.Put(Self.spriteList(1), 0, 0);
+                          load_sprite("Blue/alienBlue_walk3.png"),
+                          load_sprite("Blue/alienBlue_walk4.png"));
+      fixSprite(Self.Panel);
+      Game.Fixed.Put(Self.panel, 0, 0);
    end initSpriteList;
+   
    
    procedure Update (Self: in out Foe) is
       B: Block.Block;
@@ -69,10 +83,23 @@ is
             Tmp_Entity.Forces.X := 0.0;
          end if;
       end if;
+      if (Anime.isAnimated) then
+         if Self.State = 1 then
+            Self.setDisplayedSprite(3);
+         else
+            Self.setDisplayedSprite(5);
+         end if;
+      else
+         if Self.State = 1 then
+            Self.setDisplayedSprite(4);
+         else
+            Self.setDisplayedSprite(6);
+         end if;
+      end if;
       --- TBR
       Entity.Update (Tmp_Entity);
       Self.setEntity(Tmp_Entity);
-      Game.Fixed.Move(Self.spriteList(1), Gint(Tmp_Entity.Position.X - 64.0), Gint(Tmp_Entity.Position.Y - 64.0));
+      Game.Fixed.Move(Self.Panel, Gint(Tmp_Entity.Position.X - 64.0), Gint(Tmp_Entity.Position.Y - 64.0));
    end Update;
 
    -- getter
@@ -112,29 +139,23 @@ is
       Img : Gtk_Image;
       fixed : Gtk_Fixed;
    begin
-      Put ("1");
       -- Load image
       Gdk_New_From_File(Pixbuf   => Buff,
                         Filename => path,
                         Error    => err);
-      Put ("2");
       -- resize
       Buff := Scale_Simple(Src         => Buff,
                           Dest_Width  => 64,
                           Dest_Height => 128,
                           Inter_Type  => Interp_Bilinear);
-      Put ("3");
       -- Create widget
       Gtk_New(Img, Buff);
-      Put ("4");
       
       -- Create widget
       Gtk_New(Fixed);
-      Put ("5");
       
       -- Put the new widget inside the Layer
       Fixed.Put(Widget => Img, X => 0, Y => 0);
-      Put ("6");
 
       return Fixed;
    end load_sprite;

@@ -44,6 +44,7 @@ private
       --   0 => IDLE
       --   1 => Moving Right
       --   2 => Moving Left
+      panel : Gtk_Fixed;
       spriteList : list;
    end record;
 

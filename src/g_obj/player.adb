@@ -6,6 +6,15 @@ with Glib; use Glib;
 package body Player 
 with SPARK_Mode => Off
 is
+   procedure initSpriteList(Self : in out Player) is
+   begin
+      Self.spriteList := (load_sprite("Pink/alienPink_stand.png"),
+                          load_sprite("Pink/alienPink_stand2.png"),
+                          load_sprite("Pink/alienPink_walk1.png"),
+                          load_sprite("Pink/alienPink_walk2.png"),
+                          load_sprite("Pink/alienPink_walk3.png"),
+                          load_sprite("Pink/alienPink_walk4.png"));
+   end initSpriteList;
 
    -- getter
    function getMaxHp (Self : in Player) return Float is (Self.MaxHp);
@@ -29,7 +38,6 @@ is
    begin
       Self.Speed := Value;
    end setSpeed;
-   
    
    procedure setDisplayedSprite(Self: in Player; idx : Index) is
    begin

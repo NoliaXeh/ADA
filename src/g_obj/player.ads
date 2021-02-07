@@ -10,6 +10,8 @@ is
    
    type Index is range 1..6;
    
+   procedure initSpriteList(Self : in out Player);
+   
    -- getter
    function getMaxHp (Self : in Player) return Float;
    function getHp (Self : in Player) return Float;
@@ -21,6 +23,8 @@ is
    procedure setHp (Self : in out Player; Value : in Float)
      with Pre => Value >= 0.0 and Value <= Self.getMaxHp;
    procedure setSpeed (Self : in out Player; Value : in Float);
+   
+   -- Disable all sprites and enable the one at index idx
    procedure setDisplayedSprite(Self: in Player; idx : Index);
    
 private
@@ -33,13 +37,7 @@ private
       Hp : Float := 100.0;
       Speed : Float := 1.0;
       
-      spriteList : list := (
-                           load_sprite("Pink/alienPink_stand.png"),
-                           load_sprite("Pink/alienPink_stand2.png"),
-                           load_sprite("Pink/alienPink_walk1.png"),
-                           load_sprite("Pink/alienPink_walk2.png"),
-                           load_sprite("Pink/alienPink_walk3.png"),
-                           load_sprite("Pink/alienPink_walk4.png"));
+      spriteList : list;
    end record;
 
 end Player;

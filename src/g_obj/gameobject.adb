@@ -1,6 +1,3 @@
-with Ada.Text_IO; use Ada.Text_IO;
-with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
-
 package body GameObject
 with SPARK_Mode => Off
 is
@@ -9,7 +6,7 @@ is
    function getId (Self : in GameObject) return Integer is (Self.Id);
    function getSpritePath (Self : in GameObject) return String is (To_String(Self.SpritePath));
    function getName (Self : in GameObject) return String is (To_String(Self.Name));
-   function getEntity (Self : in GameObject) return Entity.Entity is (Self.RigidBody);
+   function getEntity (Self : in GameObject) return Entity_Ref is ((Element => Self.RigidBody'Unrestricted_Access));
    
    -- setter
    procedure setSpritePath (Self : in out GameObject; Value : in String) is

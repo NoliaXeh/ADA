@@ -12,11 +12,14 @@ is
    
    type GameObject is abstract tagged private;
    
+   type Entity_Ref (Element : not null access Entity.Entity) is null record
+     with Implicit_Dereference => Element;
+   
    -- getter
    function getId (Self : in GameObject) return Integer;
    function getSpritePath (Self : in GameObject) return String;
    function getName (Self : in GameObject) return String;
-   function getEntity (Self : in GameObject) return Entity.Entity;
+   function getEntity (Self : in GameObject) return Entity_Ref;
    
    --setter
    procedure setSpritePath (Self : in out GameObject; Value : in String)

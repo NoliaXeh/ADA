@@ -64,5 +64,8 @@ is
      with
        Post => Prod'Result.X = V.Y * U.X - V.X * U.Y
            and Prod'Result.Y = V.X * U.Y - V.Y * U.X;
+   
+   procedure Put (V: Vector);
+   procedure Put_Line (V: Vector);
 
 end Vector;

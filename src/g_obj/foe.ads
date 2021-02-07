@@ -39,7 +39,11 @@ private
       MaxHp : Float := 100.0;
       Hp : Float := 100.0;
       Speed : Float := 1.0;
-      
+      State : Integer := 0;
+      -- State
+      --   0 => IDLE
+      --   1 => Moving Right
+      --   2 => Moving Left
       spriteList : list;
    end record;
 

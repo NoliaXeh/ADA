@@ -1,6 +1,8 @@
 
 with Ada.Numerics.Elementary_Functions;
-
+with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Float_Text_IO; use Ada.Float_Text_IO;
+with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 
 package body Vector
 with SPARK_Mode => On
@@ -73,6 +75,20 @@ is
    begin
       return ( V.Y * U.X - V.X - U.Y, V.X * U.Y - V.Y * U.X );
    end;
+   
+   procedure Put (V: Vector) is
+   begin
+      Put ("(");
+      Put (Integer(V.X));
+      Put (", ");
+      Put (Integer(V.Y));
+      Put (")");
+   end;
 
+   procedure Put_Line (V: Vector) is
+   begin
+      Put (V);
+      Put_Line("");
+   end;
 
 end Vector;

@@ -32,6 +32,7 @@ is
       end if;
 
       Entity.Update(Object => Player);
+      Mechant.Update;
 
       --- Move all fixed to "follow" player
 

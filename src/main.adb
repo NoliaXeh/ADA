@@ -27,6 +27,8 @@ with inputEvent;  use inputEvent;
 
 with Sprite;      use Sprite;
 
+with Foe; use Foe;
+
 --TEST
 WITH Gtk.Main ;          USE Gtk.Main ;
 WITH Gdk.Types ;               USE Gdk.Types;
@@ -152,6 +154,10 @@ begin
    Game.Player.Position := (128.0, 128.0);
    Game.Player.Forces := (1.0, 0.0);
    Game.Delta_Time := 0.0;
+
+   Game.Mechant.initSpriteList;
+   Game.Mechant.setPosition((256.0 - 70.0, 128.0));
+
    Win.Show_All;
    Win.Present;
    Fixed_Pause.Set_Visible(False);

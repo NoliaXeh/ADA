@@ -7,6 +7,7 @@ with Physics;          use Physics;
 with Gtk.Window;      use Gtk.Window;
 with Glib;            use Glib;
 with Maps; use Maps;
+with Foe; use Foe;
 
 package Game
 with SPARK_Mode => Off
@@ -51,6 +52,8 @@ is
                                       Visible  => True,
                                       Position => (64.0, 64.0)
                                           )
-                                     );
+                                  );
+
+   Mechant : Foe.Foe;
 
 end Game;

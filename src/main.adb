@@ -213,6 +213,7 @@ begin
    if Game.isWin then
       Win.Destroy;
       Game.isWin := False;
+      Game.Foe_List.Clear;
       Game.plum.setHp(Game.plum.getMaxHp);
       goto Beginning;
    end if;

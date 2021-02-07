@@ -28,16 +28,20 @@ Pour lancer les tests il suffit de lancer le projet sur le fichier "***tests/tes
 - "***tests/***" dossier contenant les tests sur le projet.
 - "***src/***" dossier contenant les fichiers sources du projet.
     - "***src/g_obj***" dossier contenant les sources du package GameObject et ses dérivés
-	    - "***src/g_obj/block.ad****" package Block. Hérite de GameObject et contient les éléments liés aux blocks d'environnement (eau, sable, terre, ...)
-	    - "***src/g_obj/foe.ad****" package Foe. Identique à Player mais pour les ennemis avec une procédure pour l'IA.
-	    - "***src/g_obj/gameobject.ad****" package GameObject. Contient les éléments communs à tous les packages qui le dérivent (Block, Foe, Player).
-	    - "***src/g_obj/player.ad****" package Player. Hérite de GameObject et contient les éléments liés au joueur (points de vie, sprites d'animation, ...).
+        - "***src/g_obj/block.ad****" package Block. Hérite de GameObject et contient les éléments liés aux blocks d'environnement (eau, sable, terre, ...)
+        - "***src/g_obj/foe.ad****" package Foe. Identique à Player mais pour les ennemis avec une procédure pour l'IA.
+        - "***src/g_obj/gameobject.ad****" package GameObject. Contient les éléments communs à tous les packages qui le dérivent (Block, Foe, Player).
+        - "***src/g_obj/player.ad****" package Player. Hérite de GameObject et contient les éléments liés au joueur (points de vie, sprites d'animation, ...).
     - "***src/anime.ad****" package Anime. Le package Anime sert de thread loop pour changer le sprite d'un GameObject et donc avoir des animations.
-    -  "***src/file.ad****" package File. Le package File sert à faire toutes les actions sur un fichier (vérifier si il existe ou bien encore le lire).
+    - "***src/file.ad****" package File. Le package File sert à faire toutes les actions sur un fichier (vérifier si il existe ou bien encore le lire).
     - "***src/graphics.ad****" package Graphics. Le package contient les fonctions haut niveau pour remplir un GTK_Widget.
     - "***src/inputevent.ad****" package InputEvent. Le package contient la fonction pour handle les keyboards event.
     - "***src/maps.ad****" package Maps. Le package contient tout ce qui est relatif à la hashmap dans laquelle on stock les blocs.
-    - ...
+    - "***src/entity.ad****" package Entity. Le package contient tout ce qui est relatif à la physique et la collision des objets;
+    - "***src/physics.ad****" package Entity. Le package contient tout ce qui est relatif à la physique et le caclule des boites de collisions, utilisées dans le package Entity;
+    - "***src/game.ad****" package Game. Le package contient la fonction Game, qui est la boucle principale de jeu. Elle est executée 60 fois par secondes.
+    - "***src/vector.ad****" package Vector. Ce package contient le type Vector composé de deux Floats. Il contient toutes les opérations arithmétiques indispensables aux calcules de la physique du jeu notamment.
+    - "***src/sprite.ad****" package Sprite. Ce package fait le lien avec GTKAda pour l'affichage de sprites sur la fenêtre.
 
 
 # DO178C

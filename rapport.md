@@ -1,4 +1,5 @@
 
+
 # Rapport
 
 ## Introduction
@@ -30,8 +31,14 @@ Pour lancer les tests il suffit de lancer le projet sur le fichier "***tests/tes
 	    - "***src/g_obj/block.ad****" package Block. Hérite de GameObject et contient les éléments liés aux blocks d'environnement (eau, sable, terre, ...)
 	    - "***src/g_obj/foe.ad****" package Foe. Identique à Player mais pour les ennemis avec une procédure pour l'IA.
 	    - "***src/g_obj/gameobject.ad****" package GameObject. Contient les éléments communs à tous les packages qui le dérivent (Block, Foe, Player).
-	    - "***src/g_obj/player.ad****" package Block. Hérite de GameObject et contient les éléments liés au joueur (points de vie, sprites d'animation, ...)
+	    - "***src/g_obj/player.ad****" package Player. Hérite de GameObject et contient les éléments liés au joueur (points de vie, sprites d'animation, ...).
+    - "***src/anime.ad****" package Anime. Le package Anime sert de thread loop pour changer le sprite d'un GameObject et donc avoir des animations.
+    -  "***src/file.ad****" package File. Le package File sert à faire toutes les actions sur un fichier (vérifier si il existe ou bien encore le lire).
+    - "***src/graphics.ad****" package Graphics. Le package contient les fonctions haut niveau pour remplir un GTK_Widget.
+    - "***src/inputevent.ad****" package InputEvent. Le package contient la fonction pour handle les keyboards event.
+    - "***src/maps.ad****" package Maps. Le package contient tout ce qui est relatif à la hashmap dans laquelle on stock les blocs.
     - ...
+
 
 # DO178C
 

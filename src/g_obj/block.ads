@@ -21,7 +21,8 @@ is
    function getFriction (Self : in Block) return Float;
    
    -- setter
-   procedure setNature(Self : in out Block; Value : in Integer);
+   procedure setNature(Self : in out Block; Value : in Integer)
+     with Pre => (Value >= 0 and Value <= 2) or Value = 4;
    procedure setFriction (Self : in out Block; Value : in Float)
      with Pre => Value >= 0.0;
    

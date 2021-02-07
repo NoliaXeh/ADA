@@ -164,6 +164,7 @@ begin
    Win.Show_All;
    Win.Present;
    Fixed_Pause.Set_Visible(False);
+   Game.plum.setDisplayedSprite(1);
    --EVENT
    win.On_Key_Press_Event(Process_Key_Press'Unrestricted_Access);
    win.On_Key_Release_Event(Process_Key_Release'Unrestricted_Access);

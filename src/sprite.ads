@@ -13,7 +13,7 @@ is
 
    type Sprite is record
       Panel   : Gtk_Fixed;
-      Test : Gtk_Fixed;
+      Img : Gtk_Fixed;
       Visible : Boolean;
       Position: Vector.Vector;
    end record;

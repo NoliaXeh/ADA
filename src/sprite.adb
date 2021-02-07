@@ -17,7 +17,7 @@ is
 
    function Sprite_New (Path: String; Panel: Gtk_Fixed; Size_X : Gint; Size_Y: Gint) return Sprite is
       --Img: Gtk_Image;
-      Test : Gtk_Fixed;
+      Img : Gtk_Fixed;
       --Buf: Gdk_Pixbuf;
       --er: Glib.Error.GError;
       Ret: Sprite;
@@ -29,14 +29,14 @@ is
       --                    Inter_Type  => Interp_Bilinear);
       --Gtk_New (Img, Buf);
       --Panel.Put(Img, 64, 64);
-      Gtk_New(Test);
+      Gtk_New(Img);
       
       Game.plum.initSpriteList;
-      Game.plum.fixSprite(Panel => test);
+      Game.plum.fixSprite(Panel => Img);
       
-      Panel.Put(test,64,64);
+      Panel.Put(Img,64,64);
       
-      Ret.test := test;
+      Ret.Img := Img;
       Ret.Panel   := Panel;
       Ret.Visible := False;
       Ret.Position:= (64.0, 64.0);
@@ -47,11 +47,11 @@ is
    procedure Set_Visibility (Sp : in out Sprite; Visible: in Boolean) is
    begin
       Sp.Visible := Visible;
-      if Sp.Test /= null then
+      if Sp.Img /= null then
          if Visible then
-            Sp.Panel.Move (Sp.Test, Gint(Sp.Position.X), Gint(Sp.Position.Y));
+            Sp.Panel.Move (Sp.Img, Gint(Sp.Position.X), Gint(Sp.Position.Y));
          else
-            Sp.Panel.Move (Sp.Test, Gint(-0.0), Gint(-0.0));
+            Sp.Panel.Move (Sp.Img, Gint(-0.0), Gint(-0.0));
          end if;
       end if;
    end;
@@ -69,7 +69,7 @@ is
         
          --Sp.Panel.Move (Sp.Image, Gint(Sp.Position.X), Gint(Sp.Position.Y));
          if Sp.Panel /= null then
-            Sp.Panel.Move (Sp.Test, 10, 10);
+            Sp.Panel.Move (Sp.Img, 10, 10);
             Sp.Panel.Get_Parent.Show_Now;
          end if;
       end if;

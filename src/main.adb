@@ -170,7 +170,7 @@ begin
                                          Panel  => Fixed_Entities,
                                          Size_X => 64,
                                          Size_Y => 128);
-   Game.plum.getEntity.Sp.Panel.Move (Game.plum.getEntity.Sp.Test, Game.Win_Width / 2, Game.Win_Height / 2 -64);
+   Game.plum.getEntity.Sp.Panel.Move (Game.plum.getEntity.Sp.Img, Game.Win_Width / 2, Game.Win_Height / 2 -64);
    Game.plum.getEntity.Position := (128.0, 512.0);
    Game.plum.getEntity.Forces := (1.0, 0.0);
    Game.Delta_Time := 0.0;

@@ -3,7 +3,13 @@ with game; use game;
 package body Anime is
    function Anime return Boolean is
    begin
-      if game.Right then
+      if Game.Jump_Lock then 
+         if Game.Right then 
+            game.plum.setDisplayedSprite(1);
+         elsif Game.Left then 
+            game.plum.setDisplayedSprite(2);
+         end if;
+      elsif game.Right then
          if isAnimated then 
             game.plum.setDisplayedSprite(3);
          else 

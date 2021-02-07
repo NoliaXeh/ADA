@@ -1,6 +1,7 @@
 with Maps;  use Maps;
 package file is
-   function File_Exist (Name : String) return Boolean;
+   function File_Exist (Name : String) return Boolean
+     with Pre => Name /= "";
 
    procedure Read_File(Path: String; Output: out Maps.Map)
      with

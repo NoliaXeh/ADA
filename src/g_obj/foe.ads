@@ -26,7 +26,8 @@ is
      with Pre => Value > 0.0;
    procedure setHp (Self : in out Foe; Value : in Float)
      with Pre => Value >= 0.0 and Value <= Self.getMaxHp;
-   procedure setSpeed (Self : in out Foe; Value : in Float);
+   procedure setSpeed (Self : in out Foe; Value : in Float)
+     with Pre => Value >= 0.0;
    
    -- Disable all sprites and enable the one at index idx
    procedure setDisplayedSprite(Self: in Foe; idx : Index);

@@ -26,6 +26,7 @@ package body test_maps is
 
       begin
          Put("  test_get... ");
+         b.setName("block");
          for Test_Pair of Test_Value loop
             
             setNature(b, Test_Pair.expected_Result);

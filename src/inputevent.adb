@@ -90,6 +90,16 @@ is
       return True;
    end Process_Key_Release;
 
+   function Delete_Event_Cb
+     (Self  : access Gtk_Widget_Record'Class;
+      Event : Gdk.Event.Gdk_Event)
+      return Boolean
+   is
+      pragma Unreferenced (Self, Event);
+   begin
+      Gtk.Main.Main_Quit;
+      return True;
+   end Delete_Event_Cb;
 
 
 end inputEvent;

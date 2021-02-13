@@ -11,6 +11,7 @@ is
    procedure set_image(panel : Gtk_Fixed; image: in String)
      with
        Pre => File.File_Exist(image);
+   procedure init(map : Maps.Map);
 
 
 end Graphics;

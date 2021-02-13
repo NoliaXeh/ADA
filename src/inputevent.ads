@@ -15,7 +15,10 @@ is
                                Event: Gdk.Event.Gdk_Event_Key ) return Boolean;
 
    function Process_Key_Release( Self: access Gtk_Widget_Record'Class;
-                               Event: Gdk.Event.Gdk_Event_Key ) return Boolean;
+                                 Event: Gdk.Event.Gdk_Event_Key ) return Boolean;
+
+   function Delete_Event_Cb( Self  : access Gtk_Widget_Record'Class;
+                             Event : Gdk.Event.Gdk_Event ) return Boolean;
 
 
 

@@ -43,7 +43,7 @@ is
       F : Foe;
    begin
       F.setPosition(Position => Position);
-      F.initSpriteList;
+      --F.initSpriteList;
       return F;
    end;
    

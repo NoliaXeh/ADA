@@ -164,14 +164,14 @@ is
       
       --Game.Mechant.setPosition((20.0 * 64.0, 128.0));
       --Game.Mechant.initSpriteList;
-         for I in 1 .. 8 loop
-         Game.Foe_List.Append (Foe_New ((128.0 + 800.0 * Float(I), 256.0)));
-   end loop;
+      
       --init block pos
       Graphics.fill_screen (map => map);
       
-      
-      
+      --Game.Mechant.initSpriteList;
+      for F of Game.Foe_List loop
+         F.initSpriteList;
+      end loop;
       
       Win.Show_All;
       Win.Present;

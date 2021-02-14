@@ -11,8 +11,9 @@ with Gtk.Main;
 with Foe; use Foe;
 
 procedure Main is
-   osef          : G_Source_Id;
-   osefIsBack          : G_Source_Id;
+   gameLoop          : G_Source_Id;
+   animationLoop          : G_Source_Id;
+   isInit : Boolean := False;
 
    Output:Maps.Map;
 
@@ -21,10 +22,6 @@ begin
 
    --  Initialize GtkAda.
    Gtk.Main.Init;
-   --Game.Mechant.initSpriteList;
-
-
-
    --read map
    File.Read_File (Path => "src/map.txt", Output => Output);
    Game.Map := Output;
@@ -32,14 +29,17 @@ begin
    --init all
    Graphics.init(Output);
 
-
    --- Setting up game Loop, ignore returned value
+
    --- 60 FPS => 1000/60 ms between each frames => 16ms
-   osef := Glib.Main.Timeout_Add(Interval => 16, -- ms
+   gameLoop := Glib.Main.Timeout_Add(Interval => 16, -- ms
                                  Func     => Game.Game'Access);
    ---
-   osefIsBack := Glib.Main.Timeout_Add(Interval => 128, -- ms
-                                 Func     => Anime.Anime'Access);
+   if not isInit then
+      animationLoop := Glib.Main.Timeout_Add(Interval => 128, -- ms
+                                          Func     => Anime.Anime'Access);
+      isInit := True;
+   end if;
    --  Start the Gtk+ main loop
       --  Show the window and present it
    Gtk.Main.Main;

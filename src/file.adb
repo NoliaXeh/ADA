@@ -2,6 +2,7 @@ with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Integer_Text_IO;           use Ada.Integer_Text_IO;
 with Block;
 with Game; use Game;
+with Foe; use Foe;
 
 with Maps;  use Maps;
 package body file is
@@ -67,6 +68,12 @@ package body file is
                   Blk_tmp.setSpritePath(Value => "yapas.png");
                   Blk_tmp.setName(Value => "exit");
                   Blk_tmp.setNature(Value => 4);
+               elsif Line(j) = 'M' then
+                  Game.Foe_List.Append (Foe_New ((64.0 * Float(j), 
+                                        Float(i + 1 - j)/ Float(Output.width) * 64.0)));
+                  Blk_tmp.setSpritePath(Value => "yapas.png");
+                  Blk_tmp.setName(Value => "Air");
+                  Blk_tmp.setNature(Value => 2);
                else
                   Blk_tmp.setSpritePath(Value => "yapas.png");
                   Blk_tmp.setName(Value => "Air");
